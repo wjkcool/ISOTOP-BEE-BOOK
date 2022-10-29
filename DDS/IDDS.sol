@@ -1,0 +1,1 @@
+../nft2/contracts/IDDS.sol
