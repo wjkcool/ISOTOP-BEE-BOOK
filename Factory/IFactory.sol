@@ -9,10 +9,6 @@ address constant BEE_FACTORY_ADDRESS = 0xa9804fA08259Ef88856E35BaeCd6FfC7BF9dbCd
 /// @title PLAN-BEE IIsotopFactory 同位素扩展合约的工厂
 /// @author Iwan Cao
 /// @notice 开放使用合约，任何人可以申请一个合约部署，已经支持的合约名称：
-/// ISOTOP1010: 低GAS费ERC7211合约
-/// ISOTOP1011: 可销毁低GAS费合约
-/// ISOTOP1012: 可查询可销毁
-/// ISOTOP1013: 可租借合约
 /// @dev 此合约为一个Ownable继承合约，只有owner可以注册模板合约地址
 /// @custom:planbee 这是一个PLAN-BEE计划认证的合约
 
