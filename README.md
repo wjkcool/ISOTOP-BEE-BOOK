@@ -3,13 +3,21 @@
 本目录存储ISOTOP发布的智能合约接口，设计理念，测试用例和使用场景
 
 ISOTOP1010: 低GAS费ERC7211合约
+
 ISOTOP1011: 可销毁低GAS费合约
+
 ISOTOP1012: 可查询可销毁
+
 ISOTOP1013: 可租借合约
+
 ISOTOP1014: 跨链资产转移合约
+
 ISOTOP1020：ERC3525半同质化通证合约
+
 ISOTOP1021：单一slot的ERC3525半同质化通证合约
+
 ISOTOP1030: SoulBondToken 灵魂绑定合约
+
 
 合约部署地址：
 [文昌链测试链]
