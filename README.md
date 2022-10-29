@@ -8,7 +8,8 @@ ISOTOP1012: 可查询可销毁
 ISOTOP1013: 可租借合约
 ISOTOP1014: 跨链资产转移合约
 ISOTOP1020：ERC3525半同质化通证合约
-ISITOP1021：单一slot的ERC3525半同质化通证合约
+ISOTOP1021：单一slot的ERC3525半同质化通证合约
+ISOTOP1030: SoulBondToken 灵魂绑定合约
 
 合约部署地址：
 [文昌链测试链]
