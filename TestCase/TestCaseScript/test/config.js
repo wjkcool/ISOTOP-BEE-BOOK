@@ -44,11 +44,11 @@ WALLET_NOT_SIGNER_2 = new ethers.Wallet(PRIVATE_KEY_IS_NOT_SIGNER_2, PROVIDER);
 
 //运行时相关配置
 RUN_CONFIG = {
-    isCreateContract1013: true,
+    isCreateContract1013: false,
     contractSubAddr : process.env.NFT1013_CONTRACT_ADDR,
     isIssueToken: true,
-    isIssueTokenSafe : false,
-    isSetName: true,
+    isIssueTokenSafe : true,
+    isSetName: false,
     isSetSymbol: false,
     isSetBaseURI: false,
     isTransferFrom: true

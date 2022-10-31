@@ -35,26 +35,36 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
         });
 
         
-        describe("调用 transferFrom 函数 - 发行一个tokenId，转账", function() {  
+        describe("调用 transferFrom 函数 - 测试转账gas消耗", function() {  
             //为合约Owner mint 一个tokenId
-            it("3.0. 为合约Owner mint 一个tokenId", async function() {       
-                let arr = [10]
+            it("测试转账gas消耗", async function() {       
+                let arr = [5000];
 
-                issue_count = 10;
+
+                issue_count = 5000;
                 gas_price = 1;
+                let totalSupply = await newContractSub.totalSupply();
+                console.log("总发行数量totalSuppply = ", totalSupply);
+                //issue_count = 0;
 
                 //发行
-                await call_mint_or_safeMint(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, issue_count, false);
+                //   await call_mint_or_safeMint(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, issue_count, false);
                        
                 try {
 
                     for (i = 0; i < arr.length; i++) {
-                         let index = arr[0];
+                        let index = arr[i];
                         tokenId = await getTokenIdForIndx(newContractSub, issue_count, index);
 
                         console.log("第" + i + "次转账tokenId = ", tokenId);
                 
-                        await call_transferFrom(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, PUBLIC_KEY_IS_NOT_SIGNER, tokenId);
+                        //A 转 B
+                     await call_transferFrom(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, PUBLIC_KEY_IS_NOT_SIGNER, tokenId);
+                        //B 转 A
+                        // await call_transferFrom(newContractSub, newContractSub_rw_not_signer, gas_price, PUBLIC_KEY_IS_NOT_SIGNER, PUBLIC_KEY, tokenId);
+                        //B 转 C
+                        // await call_transferFrom(newContractSub, newContractSub_rw_not_signer, gas_price, PUBLIC_KEY_IS_NOT_SIGNER, PUBLIC_KEY_IS_NOT_SIGNER_2, tokenId);
+
                     }
                     
                 } catch (error) {

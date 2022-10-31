@@ -47,9 +47,9 @@ async function call_mint_or_safeMint(newContractSub, newContractSub_rw, gas_pric
         let tx;
 
         if (isSafeMint) {
-            tx = await newContractSub_rw.safeMint(address, issue_count, { gasPrice: gas_price, gasLimit: "300000" });
+            tx = await newContractSub_rw.safeMint(address, issue_count, { gasPrice: gas_price, gasLimit: "30000000000" });
         } else {
-            tx = await newContractSub_rw.mint(address, issue_count, { gasPrice: gas_price, gasLimit: "300000" });
+            tx = await newContractSub_rw.mint(address, issue_count, { gasPrice: gas_price, gasLimit: "30000000000" });
         }
 
         //等待交易确认
@@ -163,7 +163,7 @@ async function call_transferFrom(newContractSub, newContractSub_rw, gas_price, f
         console.log("token转移前，token持有者=", token_owner_before);
 
         //调用合约，发起交易
-        let tx = await newContractSub_rw.transferFrom(from, to, tokenId, { gasPrice: gas_price, gasLimit: "400000000" });
+        let tx = await newContractSub_rw.transferFrom(from, to, tokenId, { gasPrice: gas_price, gasLimit: "1000000000" });
 
         //等待交易确认
         await tx.wait().then((txResult) => {
@@ -235,12 +235,12 @@ async function getOrCreateTokenIdFromAddr(newContractSub, newContractSub_rw, gas
 //@param issue_count 一次发行数量
 //@param index 发行数量的第几个
 async function getTokenIdForIndx(newContractSub, issue_count, index) {
-    let token = await newContractSub.totalSupply();
-    expect(token).to.be.not.undefined;
+    let totalSupply = await newContractSub.totalSupply();
+    expect(totalSupply).to.be.not.undefined;
 
-    let tokenId = token.toNumber() - 1 - issue_count + index;
+    let tokenId = totalSupply.toNumber() - 1 - issue_count + index;
     expect(tokenId).to.greaterThanOrEqual(0);
-    expect(tokenId).to.lessThanOrEqual(token.toNumber() - 1);
+    expect(tokenId).to.lessThanOrEqual(totalSupply.toNumber() - 1);
 
     return tokenId;
 }
