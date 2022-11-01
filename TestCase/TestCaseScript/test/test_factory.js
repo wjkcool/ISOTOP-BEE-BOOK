@@ -1,10 +1,10 @@
 import('./config.js');
-const { expect, assert } = require("chai");
+const { call_deployContract, getContractsDeployed } = require('./test_common');
+const { expect } = require("chai");
 const { ethers } = require("hardhat");
  
 
 describe("测试连接文昌测试链 - 工厂合约", function(){
-    //return;
 
     //工厂合约
     let contract_factory_rw;
@@ -31,25 +31,7 @@ describe("测试连接文昌测试链 - 工厂合约", function(){
     describe("调用 deployContract 函数 - Success", function(){
 
         it("1.1 创建1013合约 -> 参数 NFT1013", async function() {
-            if (RUN_CONFIG.isCreateContract1013) { 
-                let tx = await contract_factory_rw.deployContract("NFT1013", { gasPrice: "1", gasLimit: "300000" });
-
-                //等待交易确认
-                await tx.wait().then((txResult) => {
-                    console.log("(gasUsed, gasPrice) = ", txResult.cumulativeGasUsed, txResult.effectiveGasPrice)
-                });
-
-                //console.log(tx);
-                expect(tx.hash).to.not.be.null;
-                contractAddrSub = await contract_factory_rw.getContractsDeployed();  
-
-                //返回结果要大于0
-                expect(contractAddrSub.length).to.greaterThan(0);
-
-                //签发者最新的1013合约地址
-                newContractSubAddr = contractAddrSub[contractAddrSub.length - 1];
-                console.log("新建1013合约地址 =", newContractSubAddr);
-            } 
+            await call_deployContract(contract_factory_rw, "NFT1013");
         });  
 
     });
@@ -58,7 +40,7 @@ describe("测试连接文昌测试链 - 工厂合约", function(){
         
         it("2.1 创建1013合约-> 参数 NFT101333333", async function() {          
            try {    
-                await contract_factory_rw.deployContract("");   
+                await call_deployContract(contract_factory_rw, "NFT101333333");   
             } catch (error) {
                 console.log("错误信息：", error.message);
                 expect(error.message).to.not.be.empty;
@@ -67,7 +49,7 @@ describe("测试连接文昌测试链 - 工厂合约", function(){
         
         it("2.2 创建1013合约-> 参数 空字符串", async function() {            
             try {    
-                 await contract_factory_rw.deployContract("");   
+                 await call_deployContract(contract_factory_rw, "");   
              } catch (error) {
                  console.log("错误信息：", error.message);
                  expect(error.message).to.not.be.empty;

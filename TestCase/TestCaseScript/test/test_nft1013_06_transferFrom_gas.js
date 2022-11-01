@@ -38,17 +38,17 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
         describe("调用 transferFrom 函数 - 测试转账gas消耗", function() {  
             //为合约Owner mint 一个tokenId
             it("测试转账gas消耗", async function() {       
-                let arr = [5000];
+                let arr = [100];
 
 
-                issue_count = 5000;
+                issue_count = 100;
                 gas_price = 1;
                 let totalSupply = await newContractSub.totalSupply();
                 console.log("总发行数量totalSuppply = ", totalSupply);
                 //issue_count = 0;
 
-                //发行
-                //   await call_mint_or_safeMint(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, issue_count, false);
+                //发行指定数量
+                await call_mint_or_safeMint(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, issue_count, false);
                        
                 try {
 
@@ -59,7 +59,7 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
                         console.log("第" + i + "次转账tokenId = ", tokenId);
                 
                         //A 转 B
-                     await call_transferFrom(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, PUBLIC_KEY_IS_NOT_SIGNER, tokenId);
+                        await call_transferFrom(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, PUBLIC_KEY_IS_NOT_SIGNER, tokenId);
                         //B 转 A
                         // await call_transferFrom(newContractSub, newContractSub_rw_not_signer, gas_price, PUBLIC_KEY_IS_NOT_SIGNER, PUBLIC_KEY, tokenId);
                         //B 转 C

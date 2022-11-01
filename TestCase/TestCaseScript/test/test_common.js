@@ -3,6 +3,38 @@ const { expect, assert } = require("chai");
 const { ethers } = require("hardhat");
 
 
+//工厂合约 - 创建新的NFT1013合约
+async function call_deployContract(contract_factory_rw, contractMark) {
+    if (RUN_CONFIG.isCreateContract1013) { 
+        let contractAddrSub = await contract_factory_rw.getContractsDeployed(); 
+        console.log("生成前，NFT1013合约总数量 = ", contractAddrSub.length);
+
+
+        let tx = await contract_factory_rw.deployContract(contractMark, { gasPrice: "1", gasLimit: "300000" });
+
+        //等待交易确认
+        await tx.wait().then((txResult) => {
+            console.log("(gasUsed, gasPrice) = ", txResult.cumulativeGasUsed, txResult.effectiveGasPrice)
+        });
+
+        //console.log(tx);
+        expect(tx.hash).to.not.be.null;
+        contractAddrSub = await contract_factory_rw.getContractsDeployed();  
+
+        //返回结果要大于0
+        expect(contractAddrSub.length).to.greaterThan(0);
+
+        //签发者最新的1013合约地址
+        newContractSubAddr = contractAddrSub[contractAddrSub.length - 1];
+        console.log("生成后，NFT1013合约总数量 = ", contractAddrSub.length);
+
+        console.log("生成的NFT1013合约地址 =", newContractSubAddr);
+    } 
+
+    return newContractSubAddr;
+}
+
+
 //获取NFT1013合约地址， 是最新的还是指定的
 async function getContractAddressForNFT1013() {
     if (RUN_CONFIG.isCreateContract1013) {
@@ -37,7 +69,7 @@ async function call_mint_or_safeMint(newContractSub, newContractSub_rw, gas_pric
     if (RUN_CONFIG.isIssueToken) {
         //获取签发者当前余额
         let balance_current_signer = await newContractSub.balanceOf(address);   
-        console.log("发行token前，账户"+ address +"余额=", balance_current_signer);
+        console.log("发行token前，账户 "+ address +" 持有token总数量 =", balance_current_signer);
 
         //获取总发行量
         let totalSupply_current = await newContractSub.totalSupply();   
@@ -60,7 +92,7 @@ async function call_mint_or_safeMint(newContractSub, newContractSub_rw, gas_pric
         //查看签发者余额
         let balance = await newContractSub.balanceOf(address);
         let balance_new_signer = parseInt(balance_current_signer) + parseInt(issue_count);
-        console.log("发行token后，账户"+ address +"余额=", balance_new_signer);
+        console.log("发行token后，账户 "+ address +" 持有token总数量 = ", balance_new_signer);
 
         //1、验证签发者余额是否累加
         expect(balance).to.equal(balance_new_signer);
@@ -152,11 +184,11 @@ async function call_transferFrom(newContractSub, newContractSub_rw, gas_price, f
     if (RUN_CONFIG.isTransferFrom) {
         //获取from当前token总数
         let from_before = await newContractSub.balanceOf(from);   
-        console.log("token转移前，账户"+ from +" 持有token总数=", from_before);
+        console.log("token转移前，账户 "+ from +" 持有token总数=", from_before);
 
         //获取to当前oken总数
         let to_before = await newContractSub.balanceOf(to);   
-        console.log("token转移前，账户"+ to +" 持有token总数=", to_before);
+        console.log("token转移前，账户 "+ to +" 持有token总数=", to_before);
 
         //获取token持有者
         let token_owner_before = await newContractSub.ownerOf(tokenId);
@@ -172,12 +204,12 @@ async function call_transferFrom(newContractSub, newContractSub_rw, gas_price, f
         
         //查看from持有token总数， 自己转给自己的，与转前数量一致
         let from_new = await newContractSub.balanceOf(from);   
-        console.log("token转移后，账户"+ from +" 持有token总数=", from_new);
+        console.log("token转移后，账户 "+ from +" 持有token总数=", from_new);
         let from_count = (from == to) ? from_before : (parseInt(from_before) - parseInt(1));
 
-        //查看from持有token总数， 自己转给自己的，与转前数量一致
+        //查看to持有token总数， 自己转给自己的，与转前数量一致
         let to_new = await newContractSub.balanceOf(to);   
-        console.log("token转移后，账户"+ to +" 持有token总数=", to_new);
+        console.log("token转移后，账户 "+ to +" 持有token总数=", to_new);
         let to_count = (from == to) ? to_before : (parseInt(to_before) + parseInt(1));
      
         //查看token持有者
@@ -192,6 +224,73 @@ async function call_transferFrom(newContractSub, newContractSub_rw, gas_price, f
 
         //3、验证token持有者是否为to
         expect(token_owner_new).to.equal(to);
+    }
+}
+
+//租借token
+async function call_setUser(newContractSub, newContractSub_rw, gas_price, from, tokenId, to, expires) {
+
+    if (RUN_CONFIG.isSetUser) {
+        console.log("参数tokenId, to, expires分别 = ", tokenId, to, expires);
+        //获取from当前token总数
+        let from_before = await newContractSub.balanceOf(from);   
+        console.log("租借前，from 账户 "+ from +" 持有token总数=", from_before);
+
+        //获取to当前oken总数
+        let to_before = await newContractSub.balanceOf(to);   
+        console.log("租借前，to 账户"+ to +" 持有token总数=", to_before);
+
+        //获取token持有者
+        let token_owner_before = await newContractSub.ownerOf(tokenId);
+        console.log("租借前，tokenId( " + tokenId + " ) 持有者=", token_owner_before);
+
+        //获取token当前租借给谁了
+        let token_userOf_before = await newContractSub.userOf(tokenId);
+        console.log("租借前，tokenId( " + tokenId + " ) 租借者=", token_userOf_before);
+
+        //调用合约，发起交易
+        let tx = await newContractSub_rw.setUser(tokenId, to, expires, { gasPrice: 1, gasLimit: "300000" });
+
+        //等待交易确认
+        await tx.wait().then((txResult) => {
+            console.log("(gasUsed, gasPrice) = ", txResult.cumulativeGasUsed, txResult.effectiveGasPrice)
+        });
+        
+        //查看from持有token总数
+        let from_after = await newContractSub.balanceOf(from);   
+        console.log("租借后，账户 "+ from +" 持有token总数=", from_after);
+
+        //查看to持有token总数
+        let to_after = await newContractSub.balanceOf(to);   
+        console.log("租借后，账户 "+ to +" 持有token总数=", to_after);
+
+        //查看token持有者
+        let token_owner_after = await newContractSub.ownerOf(tokenId);
+        console.log("租借后，tokenId( " + tokenId + " ) 持有者=", token_owner_after);
+
+        //查看token租借者
+        let token_userOf_after = await newContractSub.userOf(tokenId);
+        console.log("租借后，tokenId( " + tokenId + " ) 租借者=", token_userOf_after);
+
+        //查看token租借时间
+        let token_userOf_expires = await newContractSub.userExpires(tokenId);
+        console.log("租借后，tokenId( " + tokenId + " ) 租借时间=", token_userOf_expires);
+
+
+        //1、验证from总量是否不变
+        expect(from_after).to.equal(from_before);   
+
+        //2、验证to总量是否不变
+        expect(to_before).to.equal(to_after);
+
+        //3、验证token持有者是否为from
+        expect(token_owner_after).to.equal(token_owner_before);
+
+        //4、验证token租借者是否为to
+        expect(token_userOf_after).to.equal(to);
+
+        //5、验证租借时间是否与参数的租借时间相同
+        expect(token_userOf_expires).to.equal(expires);
     }
 }
 
@@ -273,13 +372,25 @@ async function transfer() {
 
 }
 
+//获取当前时间位移时间戳
+//@param expiresMinute 过期分钟（单位：分钟）
+async function getTimestampForNow(expiresMinute) {
+    //当前时间
+    let now = new Date();
+    //过期时间
+    return parseInt((now.setMinutes(now.getMinutes() + parseInt(expiresMinute))) / 1000);
+}
+
 module.exports = {
     getContractAddressForNFT1013,
+    call_deployContract,
     call_mint_or_safeMint,
     call_setName,
     call_setSymbol,
     call_setBaseURI,
     call_transferFrom,
+    call_setUser,
     getOrCreateTokenIdFromAddr,
-    getTokenIdForIndx
+    getTokenIdForIndx,
+    getTimestampForNow
 }

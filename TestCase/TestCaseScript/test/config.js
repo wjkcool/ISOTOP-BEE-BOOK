@@ -51,7 +51,8 @@ RUN_CONFIG = {
     isSetName: false,
     isSetSymbol: false,
     isSetBaseURI: false,
-    isTransferFrom: true
+    isTransferFrom: true,
+    isSetUser: true
 }
 
 //工厂合约接囗ABI

@@ -1,6 +1,6 @@
 import('./config.js');
-const { getContractAddressForNFT1013, call_transferFrom, call_mint_or_safeMint, getOrCreateTokenIdFromAddr } = require('./test_common');
-const { expect, assert } = require("chai");
+const { getContractAddressForNFT1013, call_transferFrom, getOrCreateTokenIdFromAddr } = require('./test_common');
+const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
 describe("测试连接文昌测试链 - NFT1013合约", function(){
