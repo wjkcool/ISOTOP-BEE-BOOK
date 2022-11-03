@@ -7,10 +7,7 @@ pragma solidity ^0.8.4;
 /**
  * @dev Interface of ISOTOP1012： 增加可租用功能
 
-测试用的baseURI json 文件：
-https://bafybeigtb3tt4a2eyurd4vk7jrjuiwnetufyfy7evmf4e2nwljatrcsdhq.ipfs.nftstorage.link/
-
-主要测试功能：
+主要功能：
 *） 给NFT加持内容：setBaseURI
 *） 铸造NFT：mint
 *） 安全铸造NFT（检查是否可以被合约地址拥有）：safeMint
@@ -20,9 +17,10 @@ https://bafybeigtb3tt4a2eyurd4vk7jrjuiwnetufyfy7evmf4e2nwljatrcsdhq.ipfs.nftstor
 *） 可查询接口：tokenByIndex, tokenOfOwnerByIndex
 *） 转移：transferFrom
 
-测试要点：
-1） 测试可租用功能
-2)  测试通过合约管理员地址替用户设置租用功能
+设计要点：
+1） 增加可租用功能
+2)  其它功能完全兼容ISOTOP1010
+3） 兼容ERC721， ERC4907
 
  */
 interface IISOTOP1012 {

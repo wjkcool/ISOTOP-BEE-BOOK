@@ -7,10 +7,7 @@ pragma solidity ^0.8.4;
 /**
  * @dev Interface of ISOTOP1011: 增加可销毁接口
 
-测试用的baseURI json 文件：
-https://bafybeigtb3tt4a2eyurd4vk7jrjuiwnetufyfy7evmf4e2nwljatrcsdhq.ipfs.nftstorage.link/
-
-主要测试功能：
+主要功能：
 *） 给NFT加持内容：setBaseURI
 *） 铸造NFT：mint
 *） 安全铸造NFT（检查是否可以被合约地址拥有）：safeMint
@@ -18,8 +15,10 @@ https://bafybeigtb3tt4a2eyurd4vk7jrjuiwnetufyfy7evmf4e2nwljatrcsdhq.ipfs.nftstor
 *） 可查询接口：tokenByIndex, tokenOfOwnerByIndex
 *） 转移：transferFrom
 
-测试要点：
-1） 测试销毁功能  
+功能要点：
+1） 相比ISOTOP1010增加销毁功能  
+2） 其它功能完全兼容ISOTOP1010
+3） 完全兼容ERC721
 
  */
 interface IISOTOP1011 {

@@ -7,20 +7,18 @@ pragma solidity ^0.8.4;
 /**
  * @dev Interface of ISOTOP1010： ERC721低GAS的兼容版
 
-测试用的baseURI json 文件：
-https://bafybeigtb3tt4a2eyurd4vk7jrjuiwnetufyfy7evmf4e2nwljatrcsdhq.ipfs.nftstorage.link/
-
-主要测试功能：
+主要功能：
 *） 给NFT加持内容：setBaseURI
 *） 铸造NFT：mint
 *） 安全铸造NFT（检查是否可以被合约地址拥有）：safeMint
 *） 可查询接口：tokenByIndex, tokenOfOwnerByIndex
 *） 转移：transferFrom
 
-测试要点：
-1)  很多联盟链需要给用户地址充值才能调用上链操作。如果没有GAS费用就无法使用。而给链账户充值又很难逐个进行，所以ISOTOP1010特地设置了管理员(owner)代替用户mint，transfer，租用的能力。无需用户账户有余额也可以通过管理员铸造，管理（比如租借），转移NFT
-2)  普通的ERC721合约一次只能铸造一个NFT，如果批量铸造1万个，GAS费用太高，ISOTOP1010设定了批量功能，GAS费用大大节省。
-3） ISOTOP1010和ERC721完全兼容，但是批量铸造的GAS费用有差异（测试需要出GAS费用的对比价格）
+设计要点：
+1)  普通的ERC721合约一次只能铸造一个NFT，如果批量铸造1万个，GAS费用太高，ISOTOP1010设定了批量功能，GAS费用大大节省。
+2)  联盟链需要给用户地址充值才能调用上链操作。如果没有GAS费用就无法使用。而给链账户充值又很难逐个进行，所以ISOTOP1010特地设置了管理员(owner)代替用户mint，transfer，租用的能力。无需用户账户有余额也可以通过管理员铸造，管理（比如租借），转移NFT
+3） 其它功能完全兼容ERC721
+
 
  */
 interface IISOTOP1010 {

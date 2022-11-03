@@ -7,10 +7,7 @@ pragma solidity ^0.8.4;
 /**
  * @dev Interface of ISOTOP1014 跨链转移智能合约
 
-测试用的baseURI json 文件：
-https://bafybeigtb3tt4a2eyurd4vk7jrjuiwnetufyfy7evmf4e2nwljatrcsdhq.ipfs.nftstorage.link/
-
-主要测试功能：
+主要功能：
 *） 给NFT加持内容：setBaseURI
 *） 铸造NFT：mint
 *） 安全铸造NFT（检查是否可以被合约地址拥有）：safeMint
@@ -21,8 +18,8 @@ https://bafybeigtb3tt4a2eyurd4vk7jrjuiwnetufyfy7evmf4e2nwljatrcsdhq.ipfs.nftstor
 *） 转移：transferFrom
 *)  跨链转移：transferFrom
 
-测试要点：
-1） 测试跨链转移功能
+设计要点：
+1） 跨链转移资产
 
  */
 interface IISOTOP1014 {
