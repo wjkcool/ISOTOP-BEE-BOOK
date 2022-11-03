@@ -2,9 +2,9 @@
 
 本目录存储ISOTOP发布的智能合约接口，设计理念，测试用例和使用场景  
 1. ISOTOP1010: 低GAS费ERC721合约  
-2. ISOTOP1011: 可销毁低GAS费合约  
-3. ISOTOP1012: 可查询可销毁  
-4. ISOTOP1013: 可租借合约  
+2. ISOTOP1011: 可销毁  
+3. ISOTOP1012: 可租借 
+4. ISOTOP1013: 可租借可销毁  
 5. ISOTOP1014: 跨链资产转移合约  
 6. ISOTOP1020：ERC3525半同质化通证合约  
 7. ISOTOP1021：单一slot的ERC3525半同质化通证合约  

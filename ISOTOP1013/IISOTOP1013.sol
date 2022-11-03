@@ -17,13 +17,11 @@ https://bafybeigtb3tt4a2eyurd4vk7jrjuiwnetufyfy7evmf4e2nwljatrcsdhq.ipfs.nftstor
 *） 租借：setUser
 *） 检查租借用户，有效期： userOf
 *） 销毁：burn
-*） 可查询接口：tokensOfOwnerIn，tokensOfOwner，
+*） 可查询接口：tokenByIndex, tokenOfOwnerByIndex
 *） 转移：transferFrom
 
 测试要点：
-1)  很多联盟链需要给用户地址充值才能调用上链操作。如果没有GAS费用就无法使用。而给链账户充值又很难逐个进行，所以ISOTOP1013特地设置了管理员(owner)代替用户mint，transfer，租用的能力。无需用户账户有余额也可以通过管理员铸造，管理NFT
-2)  普通的ERC721合约一次只能铸造一个NFT，如果批量铸造1万个，GAS费用太高，ISOTOP1013设定了批量功能，GAS费用大大节省。
-3） 测试可租用，可销毁功能
+1） 测试可租用，可销毁功能
 
  */
 interface IISOTOP1013 {
