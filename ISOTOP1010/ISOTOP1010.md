@@ -2,7 +2,10 @@
 
 如果你要写Dapp的前端，在使用IISOTOP1010合约时，需要用到`ethers.js`。
 
+
 ## 1. ethers.js简述
+
+
 
 `ethers.js`是一个完整而紧凑的开源库，用于与以太坊区块链及其生态系统进行交互。
 
@@ -19,10 +22,18 @@
 import { ethers } from "ethers";
 ```
 
-## 2. 获得工厂合约对象
+## 2 . 获得工厂合约对象
 
-要使用IISOTOP1010合约，首先需要获得工厂合约对象
+
+要使用IISOTOP1010合约，首先需要获得**工厂合约对象**
+
+获得**工厂合约对象**`ethers.Contract(FactoryContractAddr, FactoryABI, Signer)`需要三个参数，**工厂合约地址**`FactoryContractAddr`,**工厂合约ABI**`FactoryABI`,以及**钱包**`Signer`
+
  ```javascript
+     const  factoryABI = [" function deployContract(string) external returns (address)",
+                          // ......此处省略
+                          " function getContractsDeployed() external view returns (address[])"
+                          ];
      const FactoryContractAddr = '0x21264AbA1FdDECA4d89a992729b25Bd9060A4beE';
      const Provider = new ethers.providers.Web3Provider(window.ethereum);
      const Signer = Provider.getSigner();
@@ -40,8 +51,12 @@ import { ethers } from "ethers";
       IISOTOP1010AddrArray = await Factory.getContractsDeployed();
       IISOTOP1010Addr = IISOTOP1010AddrArray[IISOTOP1010AddrArray.length-1];
   ```
-之后根据`IISOTOP1010Addr`获得对象`IISOTOP`，就可以调用它的各种方法了
+之后根据`IISOTOP1010Addr`，`IISOTOP1010ABI`，`Signer`获得**子合约对象**`IISOTOP`，就可以调用它的各种方法了
 ```js
+    const IISOTOP1010ABI = ["function mint(address, uint256) external",
+                         //......此处省略
+                         "function balanceOf(address) external view returns (uint256)"
+                         ];
     const IISOTOP = new ethers.Contract(IISOTOP1010Addr, IISOTOP1010ABI, Signer);
 ```
 ## 4.  铸造NFT
@@ -85,17 +100,113 @@ import { ethers } from "ethers";
   ```js
     await  IISOTOP.setBaseURI(baseURI);
   ```
-## 11. 查询账户下所有NFT的ID
-查询账户下所有NFT的ID使用` IISOTOP.tokensOfOwner(address)`方法
-  ```js
-    await  IISOTOP.tokensOfOwner(address);
-  ```
-## 12 查询账户下ID从A-B中包含的NFT
-查询账户下ID从A-B中包含的NFT使用` IISOTOP.tokensOfOwnerIn(address,start,stop)`方法
-  ```js
-    await  IISOTOP.tokensOfOwnerIn(address,start,stop);
-  ```
-  其中start表示开始的ID，类型为uint256，stop表示结束的ID，类型为uint256，address表示需要查询的地址
 
+ ## 11. 查询NFT合集详情
+查询NFT详情使用`IISOTOP.Details()`方法
+  ```js
+    let details = await  IISOTOP.Details()；
   ```
 
+
+
+   ## 12. 查询NFT元数据
+查询NFT元数据使用`IISOTOP.tokenURI()`方法
+  ```js
+    let tokenURI = await  IISOTOP.tokenURI()；
+  ```
+   ## 13. 查询第index的NFT的tokenID
+查询NFT元数据使用`IISOTOP.tokenByIndex(index)`方法
+  ```js
+    let tokenID = await  IISOTOP.tokenByIndex(index)；
+  ```
+  ## 14. 查询owner第index的NFT的tokenID
+查询owner第index的NFT的tokenID使用`IISOTOP.tokenOfOwnerByIndex(owner,index)`方法
+  ```js
+    let tokenID = await  IISOTOP.tokenOfOwnerByIndex(owner,index)；
+  ```
+  ## 15. 查询NFT的总发行量
+查询NFT的总发行量使用`IISOTOP.totalSupply()`方法
+  ```js
+    let totalSupply = await  IISOTOP.totalSupply()；
+  ```
+  ## 16. NFT安全转账
+NFT安全转账使用`IISOTOP.safeTransferFrom(from,to，tokenID)`方法，此方法不会将NFT转入到无法转出的合约中
+  ```js
+    await  IISOTOP.safeTransferFrom(from,to，tokenID)；
+  ```
+  其中from是NFT源地址，to是目标地址
+   ## 17. NFT带数据安全转账
+NFT安全转账使用`IISOTOP.safeTransferFrom(from,to，tokenID，_data)`方法，此方法不会将NFT转入到无法转出的合约中
+  ```js
+    await  IISOTOP.safeTransferFrom(from,to，tokenID,_data)；
+  ```
+   其中from是NFT源地址，to是目标地址，_data是附加数据
+   ## 18. 授权所有操作权限
+授权所有操作权限使用`IISOTOP.setApprovalForAll(operator,approved)`方法
+  ```js
+    await  IISOTOP.setApprovalForAll(operator,approved)；
+  ```
+  其中operator是授权操作者地址，approved是bool值
+   ## 19. 查询目标地址是否有所有操作权限
+查询目标地址是否有所有操作权限使用`IISOTOP.isApprovedForAll(owner,operator)`方法
+  ```js
+    let isApprovedForAll = await  IISOTOP.isApprovedForAll(owner,operator)；
+  ```
+  其中owner是源地址，operator是授权操作者地址
+  ## 20. 查询是否支持Interface
+查询是否支持Interface使用`IISOTOP.supportsInterface(interfaceID)`方法
+  ```js
+    let isSupportsInterface = await  IISOTOP.supportsInterface(interfaceID)；
+  ```
+## 21. 转移所有权transferOwnership
+  转移所有权使用`IISOTOP.transferOwnership(newOwner)`方法
+  ```js
+    await  IISOTOP.transferOwnership(newOwner)；
+  ```
+## 22. 安全铸造NFT
+安全铸造NFT使用`IISOTOP.safeMint(to,quantity)`方法，此方法不会将NFT铸造至无法转出的合约地址中
+  ```js
+    await  IISOTOP.safeMint(to,quantity)；
+  ```
+  其中to是铸造目标地址，quantity是铸造数量
+ ## 23. 设置TGas
+  设置TGas使用`IISOTOP.setTGas(address)`方法
+  ```js
+    await  IISOTOP.setTGas(address)；
+  ```
+   ## 24. 查询TGas
+  查询TGas使用`IISOTOP.getTGas()`方法
+  ```js
+     let address = await  IISOTOP.getTGas()；
+  ```
+  ## 25. 设置DetailsURI
+设置DetailsURI使用`IISOTOP.setDetailsURI(uri)`方法
+  ```js
+     await  IISOTOP.setDetailsURI(uri)；
+  ```
+  ## 26. NFT数据初始化
+NFT数据初始化使用`IISOTOP.init(name,symbol,baseURI,details)`方法
+  ```js
+     await  IISOTOP.init(name,symbol,baseURI,details)；
+  ```
+  其中name是NFT合集名字，symbol是NFT合集符号，baseURI是NFT初始元数据，details是NFT初始详情信息
+## 27. 查询NFT合集名字
+查询NFT合集名字使用`IISOTOP.name()`方法
+  ```js
+     let name = await  IISOTOP.name()；
+  ```
+## 28. 查询NFT合集符号
+查询NFT合集符号使用`IISOTOP.symbol()`方法
+  ```js
+     let symbol = await  IISOTOP.symbol()；
+  ```
+ ## 29. 查询合约名
+查询合约名使用`IISOTOP.contractName( )`方法
+  ```js
+     let contractName = await  IISOTOP.contractName( )；
+  ```
+
+
+
+  
+  
