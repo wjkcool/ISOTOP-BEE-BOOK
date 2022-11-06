@@ -5,49 +5,27 @@
 pragma solidity ^0.8.4;
 
 /**
- * @dev Interface of ISOTOP1012： 增加可租用功能
+ * @dev Interface of ISOTOP1015： ERC721低GAS的兼容版，单一徽章
 
 主要功能：
 *） 给NFT加持内容：setBaseURI
 *） 铸造NFT：mint
 *） 安全铸造NFT（检查是否可以被合约地址拥有）：safeMint
-*） 租借：setUser
-*） 检查租借用户，有效期： userOf
-*） 销毁：burn
 *） 可查询接口：tokenByIndex, tokenOfOwnerByIndex
 *） 转移：transferFrom
 
 设计要点：
-1） 增加可租用功能
-2)  其它功能完全兼容ISOTOP1010
-3） 兼容ERC721， ERC4907
+1） 完全兼容ISOTOP1010
+2） tokenURI 返回固定的链接，所有token内容相同
+
 
  */
-interface IISOTOP1012 {
+interface IISOTOP1015 {
     event baseURIChanged(string uri);
     event detailsURIChanged(string uri);
     event gasLoaded(address gasManager);
 
-    /// @dev 新增功能
-
-    function setUser(
-        uint256 tokenId,
-        address user,
-        uint64 expires
-    ) external;
-
-    /**
-     * @dev Returns the user address for `tokenId`.
-     * The zero address indicates that there is no user or if the user is expired.
-     */
-    function userOf(uint256 tokenId) external view returns (address);
-
-    /**
-     * @dev Returns the user's expires of `tokenId`.
-     */
-    function userExpires(uint256 tokenId) external view returns (uint256);
-
-    /// @dev 标准功能
+    /// @dev 标准接口
 
     function init(
         string memory name_,
@@ -116,12 +94,6 @@ interface IISOTOP1012 {
         external
         view
         returns (uint256 tokenId);
-
-    function burn(uint256 tokenId) external;
-
-    function exists(uint256 tokenId) external view returns (bool);
-
-    function burned() external view returns (uint256);
 
     function ownerOf(uint256 tokenId) external view returns (address);
 

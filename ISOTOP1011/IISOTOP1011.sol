@@ -46,7 +46,7 @@ interface IISOTOP1011 {
 
     function symbol() external view returns (string memory);
 
-    function contractName() external returns (string memory);
+    function contractName() external pure returns (string memory);
 
     function setBaseURI(string memory base_) external;
 

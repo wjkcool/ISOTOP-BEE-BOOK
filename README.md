@@ -7,9 +7,10 @@
 3. ISOTOP1012: 可租借 
 4. ISOTOP1013: 可租借可销毁  
 5. ISOTOP1014: 跨链资产转移合约  
-6. ISOTOP1020：ERC3525半同质化通证合约  
-7. ISOTOP1021：单一slot的ERC3525半同质化通证合约  
-8. ISOTOP1030: SoulBondToken 灵魂绑定合约  
+6. ISOTOP1015: 单一图像徽章NFT合约，兼容ISOTOP1010  
+7. ISOTOP1020：ERC3525半同质化通证合约  
+8. ISOTOP1021：单一slot的ERC3525半同质化通证合约  
+9. ISOTOP1030: SoulBondToken 灵魂绑定合约  
 
 工具合约：  
 1. Deployer : 合约部署器  
@@ -22,10 +23,10 @@
 ## 合约部署地址：
 
 ***
-1. Deployer : 0xA0307fF0b18A05a0B14B0a1221f417aEDF9c3bEE  
-2. DDS : 0xE55912C90470ac23f2B58eb0348A877C56419BEE  
-3. TGas : 0x0E3bDf30F2139C04eab37C5D7dD4961039a6EBEe  
-4. Factory : 0x21264AbA1FdDECA4d89a992729b25Bd9060A4beE  
-5. DateTime : 0xE6b1b7214D99c8dfaBca77d4e0Dc5fDE74cb4BeE
+1. Deployer : 0x18C353Ca538702f862526Cd2DEeabA35f0ED3BEE  
+2. DDS : 0x8C0813590b65952197F5654ec953Ccc601725bEe  
+3. TGas : TBD  
+4. Factory : 0xfBc9d79B3841DD33fbA3338066a16A6Ae1304bEe  
+5. DateTime : 0xe9139986Bb0055632f1C49be65608aBeB57aebee
 6. [to be continue...]
 ***
