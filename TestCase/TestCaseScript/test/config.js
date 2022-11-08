@@ -6,6 +6,9 @@ API_URL = process.env.API_URL
 //工厂合约地址
 CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS
 
+//NFT1013合约地址
+NFT1013_CONTRACT_ADDR = process.env.NFT1013_CONTRACT_ADDR
+
 //签发者私钥
 PRIVATE_KEY = process.env.PRIVATE_KEY
 //签发者公钥
@@ -35,6 +38,7 @@ PUBLIC_KEY_ARRAY = [
 
 //网络节点
 PROVIDER = new ethers.providers.JsonRpcProvider(API_URL); 
+//PROVIDER = new ethers.providers.WebSocketProvider(API_URL); 
 //签发者钱包
 WALLET_SIGNER = new ethers.Wallet(PRIVATE_KEY, PROVIDER);
 //非签发者钱包
@@ -74,9 +78,9 @@ ABI_NFT1013 = [
     "function supportsInterface(bytes4 interfaceId) external view returns (bool)",
     "function balanceOf(address owner) external view returns (uint256 balance)",
     "function ownerOf(uint256 tokenId) external view returns (address owner)",
-    "function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) external payable",
-    "function safeTransferFrom(address from, address to, uint256 tokenId) external payable",
-    "function transferFrom(address from, address to, uint256 tokenId) external payable",
+    "function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory _data) external",
+    "function safeTransferFrom(address from, address to, uint256 tokenId) external",
+    "function transferFrom(address from, address to, uint256 tokenId) external",
     "function approve(address to, uint256 tokenId) external payable",
     "function setApprovalForAll(address operator, bool _approved) external",
     "function getApproved(uint256 tokenId) external view returns (address operator)",
@@ -87,8 +91,8 @@ ABI_NFT1013 = [
     "function setUser(uint256 tokenId, address user, uint64 expires) external",
     "function userOf(uint256 tokenId) external view returns (address)",
     "function userExpires(uint256 tokenId) external view returns (uint256)",
-    "function tokensOfOwnerIn(address owner, uint256 start, uint256 stop) external view returns (uint256[] memory)",
-    "function tokensOfOwner(address owner) external view returns (uint256[] memory)",
+    "function tokenByIndex(uint256 index) external view returns (uint256)",
+    "function tokenOfOwnerByIndex(address owner, uint256 index)  external view returns (uint256 tokenId)",
     "function burn(uint256 tokenId) external",
     "function setBaseURI(string memory _base) external",
     "function setName(string memory name_) external",

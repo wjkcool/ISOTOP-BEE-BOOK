@@ -1,5 +1,5 @@
 import('./config.js');
-const { getContractAddressForNFT1013 } = require('./test_common');
+const { getContractAddressForNFT1013, sleep } = require('./test_common');
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
@@ -21,7 +21,71 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
 
             newContractSub = new ethers.Contract(newContractSubAddr, ABI_NFT1013, PROVIDER);
             newContractSub_rw = new ethers.Contract(newContractSubAddr, ABI_NFT1013, WALLET_SIGNER);
-        });        
+        });    
+
+
+            it("获取tokenId所有者， ownerOf", async function() {   
+                let i = 83203;
+        // for (i = 14999; i < 15000; i++) {    
+                console.log("token( " + i + " ) 持有者=");
+                let addr = await newContractSub.ownerOf(i);
+
+                //验证NFT名称已定义
+                expect(addr).to.not.be.undefined;
+                console.log("token( " + i + " ) 持有者=", addr);
+
+                if (addr == undefined || addr == "") {
+                    
+                    var fs  = require("fs");
+
+                    //发行指定数量
+                    fs.writeFile("test3.txt",i + ", ",{flag:"w"},function(err){
+                        if(!err){
+                            console.log("写入成功！");
+                        }
+                    });
+                }
+
+           // sleep(1);
+    //    }
+
+            });  
+            return;
+        for (i = 11000; i < 11120; i++) {
+            it("获取tokenId所有者， ownerOf", async function() {    
+                let a = i;   
+                console.log("token( " + a + " ) 持有者=");
+                let addr = await newContractSub.ownerOf(a);
+
+                //验证NFT名称已定义
+                expect(addr).to.not.be.undefined;
+                console.log("token( " + a + " ) 持有者=", addr);
+
+                if (addr == undefined || addr == "") {
+                    
+                    var fs  = require("fs");
+
+                    //发行指定数量
+                    fs.writeFile("test3.txt",i + ", ",{flag:"w"},function(err){
+                        if(!err){
+                            console.log("写入成功！");
+                        }
+                    });
+                }
+
+            });  
+
+            sleep(1000);
+        }
+            return;
+                   
+        it("获取tokenId所有者， ownerOf", async function() {       
+            let addr = await newContractSub.ownerOf(11200);
+
+            //验证NFT名称已定义
+            expect(addr).to.not.be.undefined;
+            console.log("token持有者=", addr);
+        }); return;
 
         it("获取NFT名称 - name()", async function() {
             let name = await newContractSub.name();
