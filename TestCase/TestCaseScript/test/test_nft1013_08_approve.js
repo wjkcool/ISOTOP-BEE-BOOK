@@ -1,5 +1,5 @@
 import('./config.js');
-const { getContractAddressForNFT1013, call_setUser, getOrCreateTokenIdFromAddr, call_transferFrom, getTimestampForNow } = require('./test_common');
+const { getContractAddressForNFT1013, call_approve, getOrCreateTokenIdFromAddr, call_transferFrom, getTimestampForNow, call_setUser } = require('./test_common');
 const { expect, assert } = require("chai");
 const { ethers } = require("hardhat");
 
@@ -23,7 +23,7 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
         })
     });
 
-    describe("调用NFT1013合约 - setUser", function(){
+    describe("调用NFT1013合约 - approve", function(){
 
         it("创建NTF1013合约对象", async function() {
 
@@ -35,22 +35,14 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
             newContractSub_rw_not_signer_2 = new ethers.Contract(newContractSubAddr, ABI_NFT1013, WALLET_NOT_SIGNER_2);
         });
             
-        //获取合约Owner是否持有token中的一个，若没有则为合约Owner mint 一个tokenId
-        it("0 设置过期时间", async function() {
-            //设置过期分钟
-            let expiresMinute = 5;
-            //过期时间
-            expires = getTimestampForNow(expiresMinute);
-        }); 
+        describe("调用 approve 函数 - 调用者为合约Owner", function() {  
 
-        describe("调用 setUser 函数 - 调用者为合约Owner", function() {  
-
-            it("1.1 租借给 非Owner，tokenId存在", async function() {   
+            it("1.1 授权给 非Owner，tokenId存在", async function() {   
                 //创建1个token   
                 tokenId = await getOrCreateTokenIdFromAddr(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY);        
                 
                 try {
-                    await call_setUser(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY,tokenId, PUBLIC_KEY_IS_NOT_SIGNER, expires);
+                    await call_approve(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, PUBLIC_KEY_IS_NOT_SIGNER,tokenId);
                 } catch (error) {
                     console.log("错误信息：", error.message)
 
@@ -58,12 +50,12 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
                 }
             }); 
 
-            it("1.2 租借给 Owner（自租），tokenId存在", async function() {
+            it("1.2 授权给 Owner（自租），tokenId存在", async function() {
                 //创建1个token   
                 tokenId = await getOrCreateTokenIdFromAddr(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY);  
                 
                 try {
-                    await call_setUser(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY,tokenId, PUBLIC_KEY, expires);
+                    await call_approve(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, PUBLIC_KEY,tokenId);
                 } catch (error) {
                     console.log("错误信息：", error.message)
 
@@ -71,12 +63,12 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
                 }
             }); 
 
-            it("1.3 租借给给 合约地址，tokenId存在", async function() {
+            it("1.3 授权给 合约地址，tokenId存在", async function() {
                 //创建1个token   
                 tokenId = await getOrCreateTokenIdFromAddr(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY);  
                 
                 try {
-                    await call_setUser(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY,tokenId, RUN_CONFIG.contractSubAddr, expires);
+                    await call_approve(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, RUN_CONFIG.contractSubAddr,tokenId);
                 } catch (error) {
                     console.log("错误信息：", error.message)
 
@@ -86,17 +78,17 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
                     
         });    
 
-        describe("调用 setUser 函数 - 调用者为非合约Owner", function() { 
+        describe("调用 approve 函数 - 调用者为非合约Owner", function() { 
 
-            it("2.1 租借给 非Owner，tokenId存在", async function() {   
+            it("2.1 授权给 非Owner，tokenId存在", async function() {   
                 //创建1个token   
                 tokenId = await getOrCreateTokenIdFromAddr(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY);   
                 
-                //转给非Owner
+                //授权非Owner
                 await call_transferFrom(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, PUBLIC_KEY_IS_NOT_SIGNER, tokenId);
                 
                 try {
-                    await call_setUser(newContractSub, newContractSub_rw_not_signer, gas_price, PUBLIC_KEY_IS_NOT_SIGNER, tokenId, PUBLIC_KEY_IS_NOT_SIGNER_2, expires);
+                    await call_approve(newContractSub, newContractSub_rw_not_signer, gas_price, PUBLIC_KEY_IS_NOT_SIGNER,  PUBLIC_KEY_IS_NOT_SIGNER_2, tokenId);
                 } catch (error) {
                     console.log("错误信息：", error.message)
 
@@ -104,7 +96,7 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
                 }
             }); 
 
-            it("2.2 租借给 合约Owner，tokenId存在", async function() {
+            it("2.2 授权给 合约Owner，tokenId存在", async function() {
                 //创建1个token   
                 tokenId = await getOrCreateTokenIdFromAddr(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY);   
                 
@@ -112,7 +104,7 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
                 await call_transferFrom(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, PUBLIC_KEY_IS_NOT_SIGNER, tokenId);
                 
                 try {
-                    await call_setUser(newContractSub, newContractSub_rw_not_signer, gas_price, PUBLIC_KEY_IS_NOT_SIGNER, tokenId, PUBLIC_KEY, expires);
+                    await call_approve(newContractSub, newContractSub_rw_not_signer, gas_price, PUBLIC_KEY_IS_NOT_SIGNER,  PUBLIC_KEY, tokenId);
                 } catch (error) {
                     console.log("错误信息：", error.message)
 
@@ -120,7 +112,7 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
                 }
             }); 
 
-            it("2.3 租借给给 合约地址，tokenId存在", async function() {
+            it("2.3 授权给 合约地址，tokenId存在", async function() {
                 
                 //创建1个token   
                 tokenId = await getOrCreateTokenIdFromAddr(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY);   
@@ -129,7 +121,7 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
                 await call_transferFrom(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, PUBLIC_KEY_IS_NOT_SIGNER, tokenId);
                 
                 try {
-                    await call_setUser(newContractSub, newContractSub_rw_not_signer, gas_price, PUBLIC_KEY_IS_NOT_SIGNER,tokenId, RUN_CONFIG.contractSubAddr, expires);
+                    await call_approve(newContractSub, newContractSub_rw_not_signer, gas_price, PUBLIC_KEY_IS_NOT_SIGNER,  RUN_CONFIG.contractSubAddr, tokenId);
                 } catch (error) {
                     console.log("错误信息：", error.message)
 
@@ -139,14 +131,14 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
                     
         }); 
         
-        describe("调用 setUser 函数 - 调用者为合约Owner - Error", function() { 
+        describe("调用 approve 函数 - 调用者为合约Owner - Error", function() { 
 
-            it("3.1 租借给零地址", async function() {   
+            it("3.1 授权给零地址", async function() {   
                 //创建1个token   
                 tokenId = await getOrCreateTokenIdFromAddr(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY); 
                 
                 try {
-                    await call_setUser(newContractSub, newContractSub_rw_not_signer, gas_price, PUBLIC_KEY, tokenId, PUBLIC_KEY_ZERO, expires);
+                    await call_approve(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, PUBLIC_KEY_ZERO, tokenId);
                 } catch (error) {
                     console.log("错误信息：", error.message)
 
@@ -154,12 +146,12 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
                 }
             }); 
 
-            it("3.2 租借给无效地址", async function() {   
+            it("3.2 授权给无效地址", async function() {   
                 //创建1个token   
                 tokenId = await getOrCreateTokenIdFromAddr(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY); 
                 
                 try {
-                    await call_setUser(newContractSub, newContractSub_rw_not_signer, gas_price, PUBLIC_KEY, tokenId, PUBLIC_KEY_INVALID, expires);
+                    await call_approve(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, PUBLIC_KEY_INVALID, tokenId);
                 } catch (error) {
                     console.log("错误信息：", error.message)
 
@@ -172,50 +164,61 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
                 tokenId = await getOrCreateTokenIdFromAddr(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY); 
                 
                 try {
-                    await call_setUser(newContractSub, newContractSub_rw_not_signer, gas_price, PUBLIC_KEY_IS_NOT_SIGNER, tokenId, PUBLIC_KEY, expires);
+                    await call_approve(newContractSub, newContractSub_rw_not_signer, gas_price, PUBLIC_KEY, PUBLIC_KEY_IS_NOT_SIGNER, tokenId);
                 } catch (error) {
                     console.log("错误信息：", error.message)
 
                     expect(error.message).to.not.be.empty;
                 }
                 
-                // expect(await newContractSub.connect(WALLET_SIGNER).setUser(tokenId, PUBLIC_KEY, expires, { gasPrice: 1, gasLimit: "300000" } )).to.revertedWith('inalid address');
-
-               // expect(await newContractSub_rw_not_signer.setUser(tokenId, PUBLIC_KEY, expires, { gasPrice: 1, gasLimit: "300000" } )).to.revertedWith('invalid address');
             }); 
+                    
+        }); 
 
-            it("3.4 租借给非Owner，过期时间小于当前时间", async function() {   
+        describe("调用 approve 函数 - 场景1 - 授权后转账", function() { 
+
+            it("4.1 为账户A创建一个token", async function() {   
                 //创建1个token   
                 tokenId = await getOrCreateTokenIdFromAddr(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY); 
+            }); 
 
-                let minute = -10
-
-                expires = getTimestampForNow(minute);
+            it("4.2 账户A将token授权给账户B", async function() { 
                 
                 try {
-                    await call_setUser(newContractSub, newContractSub_rw_not_signer, gas_price, PUBLIC_KEY, tokenId, PUBLIC_KEY, expires);
+                    await call_approve(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, PUBLIC_KEY_IS_NOT_SIGNER, tokenId);
                 } catch (error) {
                     console.log("错误信息：", error.message)
 
-                    expect(error.message).to.not.be.empty;
+                    expect(error.message).to.be.empty;
+                }
+            }); 
+
+            it("4.3 账户A将token转账给账户C", async function() { 
+                
+                try {
+                    await call_transferFrom(newContractSub, newContractSub_rw_not_signer, gas_price, PUBLIC_KEY, PUBLIC_KEY_IS_NOT_SIGNER_2, tokenId);
+                } catch (error) {
+                    console.log("错误信息：", error.message)
+
+                    expect(error.message).to.be.empty;
                 }
             }); 
                     
         }); 
 
-        describe("调用 setUser 函数 - 场景1", function() { 
+        describe("调用 approve 函数 - 场景2 - 授权后租借", function() { 
 
-            it("4.1 为账户A创建一个token", async function() {   
+            it("5.1 为账户A创建一个token", async function() {   
                 //创建1个token   
                 tokenId = await getOrCreateTokenIdFromAddr(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY); 
                 //过期时间10分钟
                 expires = getTimestampForNow(10);
             }); 
 
-            it("4.2 账户A将token租借给账户B", async function() { 
+            it("5.2 账户A将token授权给账户B", async function() { 
                 
                 try {
-                    await call_setUser(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, tokenId, PUBLIC_KEY_IS_NOT_SIGNER, expires);
+                    await call_approve(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, PUBLIC_KEY_IS_NOT_SIGNER, tokenId);
                 } catch (error) {
                     console.log("错误信息：", error.message)
 
@@ -223,10 +226,21 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
                 }
             }); 
 
-            it("4.3 账户A将token租借给账户C（过期时间未到）", async function() { 
+            it("5.3 账户A将token租借给账户C", async function() { 
                 
                 try {
-                    await call_setUser(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, tokenId, PUBLIC_KEY_IS_NOT_SIGNER_2, expires);
+                    await call_setUser(newContractSub, newContractSub_rw_not_signer, gas_price, PUBLIC_KEY,tokenId, PUBLIC_KEY_IS_NOT_SIGNER_2, expires);
+                } catch (error) {
+                    console.log("错误信息：", error.message)
+
+                    expect(error.message).to.be.empty;
+                }
+            }); 
+
+            it("5.4 账户A将token租借给账户D", async function() { 
+                
+                try {
+                    await call_setUser(newContractSub, newContractSub_rw_not_signer, gas_price, PUBLIC_KEY,tokenId, RUN_CONFIG.contractSubAddr, expires);
                 } catch (error) {
                     console.log("错误信息：", error.message)
 
@@ -234,7 +248,7 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
                 }
             }); 
                     
-        }); 
+        });
     });
  
 });

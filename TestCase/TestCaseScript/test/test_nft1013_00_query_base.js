@@ -1,5 +1,5 @@
 import('./config.js');
-const { getContractAddressForNFT1013 } = require('./test_common');
+const { getContractAddressForNFT1013, sleep } = require('./test_common');
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
@@ -21,7 +21,7 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
 
             newContractSub = new ethers.Contract(newContractSubAddr, ABI_NFT1013, PROVIDER);
             newContractSub_rw = new ethers.Contract(newContractSubAddr, ABI_NFT1013, WALLET_SIGNER);
-        });        
+        });    
 
         it("获取NFT名称 - name()", async function() {
             let name = await newContractSub.name();

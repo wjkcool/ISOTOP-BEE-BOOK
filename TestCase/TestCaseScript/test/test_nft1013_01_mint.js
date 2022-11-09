@@ -17,7 +17,8 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
         it("获取链上信息", async function() {           
             gas_price = await PROVIDER.getGasPrice();          
             expect(gas_price).to.not.be.undefined;
-           // gas_price = gasPrice.toNumber();
+           
+            gas_price = 1;
         })
     });
 

@@ -1,5 +1,5 @@
 import('./config.js');
-const { getContractAddressForNFT1013, call_mint_or_safeMint } = require('./test_common');
+const { getContractAddressForNFT1013, sleep } = require('./test_common');
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
@@ -30,29 +30,40 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
             newContractSub_rw = new ethers.Contract(newContractSubAddr, ABI_NFT1013, WALLET_SIGNER);
         });
 
-        describe("调用 mint 函数", function() {
-            it("1. 签发者发token -> 大于0 且为签发者地址", async function() {
-                let issue_count = 0;
-                let base = 10000;
+        describe("调用 mint 函数 - GAS", function() {
+            let issue_count = 10000;
 
-                for (i = 1; i < 20; i++) {
+            for (i = 0; i < 500; i++) {
+            // console.log(i);
+                it("1.1 签发者发token ", async function() {
 
-                    issue_count += base;
+                    console.log("start == ", new Date())
 
-                    console.log("本次发行量=", issue_count, i)
-                    await call_mint_or_safeMint(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, issue_count, true);             
+                    //获取总发行量
+                    let totalSupply_before = await newContractSub.totalSupply();   
+                    console.log("发行token前，总发行量=", totalSupply_before);
+                    let tx = await newContractSub_rw.mint(PUBLIC_KEY, issue_count, { gasPrice: 1, gasLimit: "40000000" });
+                
+                    //等待交易确认
+                    await tx.wait().then((txResult) => {
+                        console.log("(gasUsed, gasPrice) = ", txResult.cumulativeGasUsed, txResult.effectiveGasPrice);
+                        //消耗写入文件
+                        var fs  = require("fs");
+                        fs.appendFile("test3.txt", issue_count + "    " + txResult.cumulativeGasUsed + "\n",{flag:"a"},function(err){
+                            if(!err){
+                                console.log("写入成功！");
+                            } else {
+                                console.log("写入失败");
+                            }
+                        });
+                    })
 
-                    if (issue_count < 10) {
-                        base = 1;
-                    } else if (issue_count < 100) {
-                        base = 10;
-                    } else if (issue_count < 1000) {
-                        base = 100;
-                    } else {
-                        base = 1000;
-                    }
-                }          
-            });      
+                    console.log("end == ", new Date())
+                }); 
+
+                sleep(1000);
+            }     
+             
         });
 
     });
