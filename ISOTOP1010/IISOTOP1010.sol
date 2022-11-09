@@ -19,9 +19,19 @@ pragma solidity ^0.8.4;
 2)  联盟链需要给用户地址充值才能调用上链操作。如果没有GAS费用就无法使用。而给链账户充值又很难逐个进行，所以ISOTOP1010特地设置了管理员(owner)代替用户mint，transfer，租用的能力。无需用户账户有余额也可以通过管理员铸造，管理（比如租借），转移NFT
 3） 其它功能完全兼容ERC721
 
-
  */
-interface IISOTOP1010 {
+
+import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
+
+interface IISOTOP1010 is
+    IERC721,
+    IERC721Receiver,
+    IERC721Metadata,
+    IERC721Enumerable
+{
     event baseURIChanged(string uri);
     event detailsURIChanged(string uri);
     event gasLoaded(address gasManager);
@@ -49,58 +59,31 @@ interface IISOTOP1010 {
 
     function getTGas() external view returns (address);
 
-    function transferOwnership(address newOwner) external;
-
-    function mint(address _to, uint256 quantity) external;
-
-    function safeMint(address _to, uint256 quantity) external;
-
-    function supportsInterface(bytes4 interfaceId) external view returns (bool);
-
-    function approve(address to, uint256 tokenId) external;
-
-    function getApproved(uint256 tokenId) external view returns (address);
-
-    function setApprovalForAll(address operator, bool approved) external;
-
-    function isApprovedForAll(address owner, address operator)
-        external
-        view
-        returns (bool);
-
-    function transferFrom(
-        address from,
-        address to,
-        uint256 tokenId
-    ) external;
-
-    function safeTransferFrom(
-        address from,
-        address to,
-        uint256 tokenId
-    ) external;
-
-    function safeTransferFrom(
-        address from,
-        address to,
-        uint256 tokenId,
-        bytes memory _data
-    ) external;
-
-    function totalSupply() external view returns (uint256);
-
-    function tokenByIndex(uint256 index) external view returns (uint256);
-
-    function tokenOfOwnerByIndex(address owner, uint256 index)
-        external
-        view
-        returns (uint256 tokenId);
-
-    function ownerOf(uint256 tokenId) external view returns (address);
-
-    function balanceOf(address owner) external view returns (uint256);
-
     function Details() external view returns (string memory);
 
-    function tokenURI(uint256 tokenId) external view returns (string memory);
+    // @dev Ownerable 接口
+    event OwnershipTransferred(
+        address indexed previousOwner,
+        address indexed newOwner
+    );
+
+    /**
+     * @dev Returns the address of the current owner.
+     */
+    function owner() external returns (address);
+
+    /**
+     * @dev Leaves the contract without owner. It will not be possible to call
+     * `onlyOwner` functions anymore. Can only be called by the current owner.
+     *
+     * NOTE: Renouncing ownership will leave the contract without an owner,
+     * thereby removing any functionality that is only available to the owner.
+     */
+    function renounceOwnership() external;
+
+    /**
+     * @dev Transfers ownership of the contract to a new account (`newOwner`).
+     * Can only be called by the current owner.
+     */
+    function transferOwnership(address newOwner) external;
 }
