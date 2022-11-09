@@ -37,11 +37,11 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
 
         
         describe("调用 transferFrom 函数 - 测试转账gas消耗", function() {  
-            let issue_count = 1000;
+            let issue_count = 10000;
 
-            for (i = 0; i < 1; i++) {
+            for (i = 0; i < 10; i++) {
                // console.log(i);
-                it("1.1 签发者发token -> 大于0 且为签发者地址", async function() {
+                it("1.1 签发者发token ", async function() {
 
                    //await call_mint_or_safeMint(newContractSub, newContractSub_rw, 1, PUBLIC_KEY, issue_count, false);
 

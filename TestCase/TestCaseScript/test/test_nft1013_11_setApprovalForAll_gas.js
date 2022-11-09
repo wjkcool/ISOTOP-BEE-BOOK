@@ -1,5 +1,5 @@
 import('./config.js');
-const { getContractAddressForNFT1013, call_setUser, call_mint_or_safeMint, getTokenIdForIndx, getTimestampForNow } = require('./test_common');
+const { getContractAddressForNFT1013, call_setApprovalForAll, call_mint_or_safeMint, getTokenIdForIndx } = require('./test_common');
 const { expect, assert } = require("chai");
 const { ethers } = require("hardhat");
 
@@ -14,7 +14,6 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
     //gasPrice
     let gas_price;
     let tokenId;
-    let expires;
 
     describe("获取链上信息", function() {
         it("获取链上信息", async function() {           
@@ -23,7 +22,7 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
         })
     });
 
-    describe("调用NFT1013合约 - setUser", function(){
+    describe("调用NFT1013合约 - setApprovalForAll", function(){
 
         it("创建NTF1013合约对象", async function() {
 
@@ -36,45 +35,28 @@ describe("测试连接文昌测试链 - NFT1013合约", function(){
         });
             
 
-        describe("调用 setUser 函数 - gas消耗", function() { 
+        describe("调用 setApprovalForAll 函数 - gas消耗", function() { 
             //发行数量
-            let issue_count = 2000;
-
-            //过期时间10分钟
-            let expires = getTimestampForNow(5);
+            let issue_count = 10000;
 
             //创建一定数量的token
-            // it("1. 创建一定数量的token", async function() {
-            //     await call_mint_or_safeMint(newContractSub, newContractSub_rw, 1, PUBLIC_KEY, issue_count, false);
-            // }) 
+            it("1. 创建一定数量的token", async function() {
+                await call_mint_or_safeMint(newContractSub, newContractSub_rw, 1, PUBLIC_KEY, issue_count, false);
+            }) 
 
-            it("2. 租借第一个", async function() { 
-
-                tokenId = await getTokenIdForIndx(newContractSub, issue_count, 1);
+            it("2. 批量授权 - true", async function() { 
                 
                 try {
-                    await call_setUser(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, tokenId, PUBLIC_KEY_IS_NOT_SIGNER, expires);
+                    await call_setApprovalForAll(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, PUBLIC_KEY_IS_NOT_SIGNER, true);
                 } catch (error) {
                     expect(error.message).to.be.empty;
                 }
             }); 
 
-            it("3. 租借中间一个", async function() { 
-
-                tokenId = await getTokenIdForIndx(newContractSub, issue_count, parseInt(issue_count / 2));
+            it("3. 批量授权 - false", async function() { 
                 
                 try {
-                    await call_setUser(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, tokenId, PUBLIC_KEY_IS_NOT_SIGNER, expires);
-                } catch (error) {
-                    expect(error.message).to.be.empty;
-                }
-            }); 
-
-             it("4. 租借最后一个", async function() { 
-                tokenId = await getTokenIdForIndx(newContractSub, issue_count, issue_count);
-                
-                try {
-                    await call_setUser(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, tokenId, PUBLIC_KEY_IS_NOT_SIGNER, expires);
+                    await call_setApprovalForAll(newContractSub, newContractSub_rw, gas_price, PUBLIC_KEY, PUBLIC_KEY_IS_NOT_SIGNER, false);
                 } catch (error) {
                     expect(error.message).to.be.empty;
                 }

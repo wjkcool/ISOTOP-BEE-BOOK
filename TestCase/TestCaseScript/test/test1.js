@@ -3,15 +3,7 @@ const { ethers } = require("hardhat");
 const { Transaction } = require("ethereumjs-tx");
 
 describe("test data", function() {  
-    context('when the given address owns some tokens', function () {
-        it('returns the amount of tokens owned by the given address', async function () {
-          console.log("aaaaaaaaaaaaaaaaaa");
-        });
-      });
-
     
-    
-    // describe("获取链上信息", function() {
     //     it("test", async function() {     
     //        // console.log(ABI_NFT1013);
     //         let iface = new ethers.utils.Interface(ABI_NFT1013);
@@ -50,5 +42,4 @@ describe("test data", function() {
     //         });
 
     //     });
-    // });
 });

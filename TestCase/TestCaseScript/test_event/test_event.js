@@ -28,5 +28,10 @@ async function listenEvent() {
         console.log("event setUser ==", new Date(), tokenId, user, expires, event.blockNumber);
     });
 
+    //事件2.3 - NFT1013合约 - 授权token
+    contract_nft1013_rw.on("Approve", (tokenId, user, event) => {
+        console.log("event approve ==", new Date(), tokenId, user, event.blockNumber);
+    });
+
 }
 listenEvent();

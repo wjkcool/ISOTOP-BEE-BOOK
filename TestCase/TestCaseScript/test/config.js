@@ -56,7 +56,11 @@ RUN_CONFIG = {
     isSetSymbol: false,
     isSetBaseURI: false,
     isTransferFrom: true,
-    isSetUser: true
+    isSetUser: true,
+    isApprove: true,
+    isBurn: true,
+    isTransferOwnership: true,
+    isSetApprovalForAll: true
 }
 
 //工厂合约接囗ABI
@@ -81,9 +85,9 @@ ABI_NFT1013 = [
     "function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory _data) external",
     "function safeTransferFrom(address from, address to, uint256 tokenId) external",
     "function transferFrom(address from, address to, uint256 tokenId) external",
-    "function approve(address to, uint256 tokenId) external payable",
+    "function approve(address to, uint256 tokenId) external",
     "function setApprovalForAll(address operator, bool _approved) external",
-    "function getApproved(uint256 tokenId) external view returns (address operator)",
+    "function getApproved(uint256 tokenId) external view returns (address)",
     "function isApprovedForAll(address owner, address operator) external view returns (bool)",
     "function name() external view returns (string memory)",
     "function symbol() external view returns (string memory)",
@@ -94,6 +98,7 @@ ABI_NFT1013 = [
     "function tokenByIndex(uint256 index) external view returns (uint256)",
     "function tokenOfOwnerByIndex(address owner, uint256 index)  external view returns (uint256 tokenId)",
     "function burn(uint256 tokenId) external",
+    "function burned() external view returns (uint256)",
     "function setBaseURI(string memory _base) external",
     "function setName(string memory name_) external",
     "function setSymbol(string memory symbol_) external",
