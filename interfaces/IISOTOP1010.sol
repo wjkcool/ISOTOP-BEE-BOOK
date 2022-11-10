@@ -45,10 +45,6 @@ interface IISOTOP1010 is
         string memory details_
     ) external;
 
-    function name() external view returns (string memory);
-
-    function symbol() external view returns (string memory);
-
     function contractName() external pure returns (string memory);
 
     function setBaseURI(string memory base_) external;
