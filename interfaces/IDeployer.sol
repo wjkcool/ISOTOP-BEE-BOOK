@@ -4,7 +4,7 @@
 
 pragma solidity ^0.8.4;
 
-address constant BEE_DEPLOYER_ADDRESS = 0xA0307fF0b18A05a0B14B0a1221f417aEDF9c3bEE;
+address constant BEE_DEPLOYER_ADDRESS = 0x18C353Ca538702f862526Cd2DEeabA35f0ED3BEE;
 
 /// @title PLAN-BEE IDeployer 同位素合约部署器
 /// @author Iwan Cao
@@ -15,12 +15,12 @@ address constant BEE_DEPLOYER_ADDRESS = 0xA0307fF0b18A05a0B14B0a1221f417aEDF9c3b
 interface IDeployer {
     event Deployed(address addr, address indexed owner, uint256 salt);
 
-    /// 根据salt和合约的bytecode计算合约地址
     function getAddress(bytes memory bytecode, uint256 _salt)
         external
         view
         returns (address);
 
-    /// 使用salt值部署一个合约
     function Deploy(bytes memory bytecode, uint256 _salt) external;
+
+    function transferOwnership(address _addr, address _newOwner) external;
 }

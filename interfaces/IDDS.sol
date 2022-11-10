@@ -3,7 +3,7 @@
 // Creator: Dr. Zu team
 pragma solidity ^0.8.4;
 
-address constant BEE_DDS_ADDRESS = 0xE55912C90470ac23f2B58eb0348A877C56419BEE;
+address constant BEE_DDS_ADDRESS = 0x8C0813590b65952197F5654ec953Ccc601725bEe;
 
 /// @title PLAN-BEE IDDS Domain Data System 域名数据系统
 /// @author Iwan Cao
@@ -56,4 +56,10 @@ interface IDDS {
         external
         view
         returns (string[] memory);
+
+    function toAddress(bytes memory b) external pure returns (address addr);
+
+    function toInt(bytes calldata b) external pure returns (uint256 value);
+
+    function toBool(bytes calldata b) external pure returns (bool);
 }
