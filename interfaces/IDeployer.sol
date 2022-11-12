@@ -4,8 +4,6 @@
 
 pragma solidity ^0.8.4;
 
-address constant BEE_DEPLOYER_ADDRESS = 0x18C353Ca538702f862526Cd2DEeabA35f0ED3BEE;
-
 /// @title PLAN-BEE IDeployer 同位素合约部署器
 /// @author Iwan Cao
 /// @notice 开放使用合约，任何人可以部署自己的合约到指定地址

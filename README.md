@@ -26,9 +26,22 @@
 ***
 1. Deployer : 0x18C353Ca538702f862526Cd2DEeabA35f0ED3BEE  
 2. DDS : 0x8C0813590b65952197F5654ec953Ccc601725bEe  
-3. TGas : 0x828Ac724343DC9Fc612267eF05ca941FCbC53bEE  
-4. Factory : 0xfBc9d79B3841DD33fbA3338066a16A6Ae1304bEe  
-5. DateTime : 0xe9139986Bb0055632f1C49be65608aBeB57aebee
 
-last updated: 2022.11.6
 ***
+## 使用方式
+
+DDS是一个全局的注册表，允许任何机构注册自己的域名和数据。同位素的域名为ISOTOP，登记有同位素的工具合约地址，获取方式为：  
+
+dds.get('ISOTOP', 'BEE_FACTORY_ADDRESS')  获取注册的Factory合约地址  
+dds.get('ISOTOP', 'BEE_DATETIME_ADDRESS')  获取注册的DateTime合约地址  
+dds.get('ISOTOP', 'BEE_TGAS_ADDRESS')  获取注册的TGas合约地址  
+
+Factory 管理同位素的ERC721扩展合约，ERC3525扩展合约等，申请的方式为：  
+Factory.deployContract('ISOTO1010')  部署一个ISOTOP1010模板合约  
+Factory.deployContract('ISOTO1011')  部署一个ISOTOP1011模板合约  
+Factory.deployContract('ISOTO1012')  部署一个ISOTOP1012模板合约  
+Factory.deployContract('ISOTO1013')  部署一个ISOTOP1013模板合约  
+Factory.deployContract('ISOTO1014')  部署一个ISOTOP1014模板合约  
+Factory.deployContract('ISOTO1015')  部署一个ISOTOP1015模板合约  
+
+last updated: 2022.11.12
