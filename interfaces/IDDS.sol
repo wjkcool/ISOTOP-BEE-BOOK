@@ -3,7 +3,7 @@
 // Creator: Dr. Zu team
 pragma solidity ^0.8.4;
 
-address constant BEE_DDS_ADDRESS = 0x9B2646A81e7486409f11269075F28d051484abeE;
+address constant BEE_DDS_ADDRESS = 0x8C0813590b65952197F5654ec953Ccc601725bEe;
 
 /// @title PLAN-BEE IDDS Domain Data System 域名数据系统
 /// @author Iwan Cao
