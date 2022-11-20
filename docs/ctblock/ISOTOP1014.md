@@ -6,10 +6,15 @@
 如果你要使用草田链上的ISOTOP合约，需要配置metamask的自定义RPC网络，具体如下：
 
 网络名称:   草田链
+
 RPC URL:   https://ctblock.cn/blockChain
+
 链ID:   27
+
 货币符号:   CT
+
 区块链浏览器:   https://ctblock.cn/
+
 
 如下图所示：
 
@@ -18,7 +23,10 @@ RPC URL:   https://ctblock.cn/blockChain
 
 另外写Dapp的前端，使用IISOTOP1010合约时，需要用到`ethers.js`。
 
-##  1. ethers.js简述
+
+## 1. ethers.js简述
+
+
 
 `ethers.js`是一个完整而紧凑的开源库，用于与以太坊区块链及其生态系统进行交互。
 
@@ -31,44 +39,43 @@ RPC URL:   https://ctblock.cn/blockChain
 3. 原生支持`ENS`。
 
 使用方法也很简单
-
 ``` js
-
 import { ethers } from "ethers";
-
 ```
 
-##  2 . 获得工厂合约对象
+## 2 . 获得工厂合约对象
 
-要使用IISOTOP1014合约，首先需要获得**工厂合约对象**
 
-获得**工厂合约对象**`ethers.Contract(FactoryContractAddr, FactoryABI, Signer)`需要三个参数，**工厂合约地址**`FactoryContractAddr`,**工厂合约ABI**`FactoryABI`,以及**钱包**`Signer`
-
-```javascript
-
-const factoryABI = [" function deployContract(string) external returns (address)",
-
-// ......此处省略
-
-" function getContractsDeployed() external view returns (address[])"
-
-];
-
-const FactoryContractAddr = '0x21264AbA1FdDECA4d89a992729b25Bd9060A4beE';
-
-const Provider = new ethers.providers.Web3Provider(window.ethereum);
-
-const Signer = Provider.getSigner();
-
-const Factory = new ethers.Contract(FactoryContractAddr, FactoryABI, Signer);
-
-let waiter = await Factory.deployContract('ISOTOP1014');
-
-waiter.wait();
-
+1. 要使用IISOTOP1010合约，首先需要通过DDS系统获得**工厂合约地址**`FactoryContractAddr`
+```js
+    const Provider = new ethers.providers.Web3Provider(window.ethereum);
+    const Signer = Provider.getSigner();
+    const DDSAddr = '0x8C0813590b65952197F5654ec953Ccc601725bEe';
+    const DDSABI = [
+                   "function get(string calldata _domain, string calldata _key) external view returns (bytes memory)",
+                    // ......此处省略
+                   "function toAddress(bytes memory b) external pure returns (address addr)"
+                    ]
+    const DDSContract = new  ethers.Contract(DDSAddr, DDSABI, signer);
+    const DDSBytes = await  ddsContract.get('ISOTOP', 'BEE_FACTORY_ADDRESS');
+    const FactoryContractAddr = await  ddsContract.toAddress(ddsBytes);
 ```
 
-其中`FactoryContractAddr`是工厂合约地址，`Factory`是生成的工厂合约对象
+2.  通过**工厂合约地址**获得**工厂合约对象**
+
+    获得**工厂合约对象**`ethers.Contract(FactoryContractAddr, FactoryABI, Signer)`需要三个参数，**工厂合约地址**`FactoryContractAddr`,**工厂合约ABI**`FactoryABI`,以及**钱包**`Signer`
+
+ ```javascript
+     const  factoryABI = [" function deployContract(string) external returns (address)",
+                          // ......此处省略
+                          " function getContractsDeployed() external view returns (address[])"
+                          ];
+     const FactoryContractAddr = '0x21264AbA1FdDECA4d89a992729b25Bd9060A4beE';
+     const Factory = new ethers.Contract(FactoryContractAddr, FactoryABI, Signer);
+     let waiter = await Factory.deployContract('ISOTOP1010');
+     waiter.wait();
+ ```
+ 其中`FactoryContractAddr`是工厂合约地址，`Factory`是生成的工厂合约对象
 
 ##  3. 查询子合约地址并获得`IISOTOP`对象
 
