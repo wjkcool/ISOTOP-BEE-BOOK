@@ -33,7 +33,7 @@
 
 DDS是一个全局的注册表，允许任何机构注册自己的域名和数据。同位素的域名为ISOTOP，登记有同位素的工具合约地址，获取方式为：  
 
-获取注册的Factory合约地址 
+获取注册的Factory合约地址   
 ` ` `
 dds.toAddress(dds.get('ISOTOP', 'BEE_FACTORY_ADDRESS'))   
 ` ` `
@@ -49,7 +49,7 @@ dds.toAddress(dds.get('ISOTOP', 'BEE_TGAS_ADDRESS'))
 ` ` `
 
 Factory 管理同位素的ERC721扩展合约，ERC3525扩展合约等，申请的方式为：  
-部署一个ISOTOP1010模板合约 
+部署一个ISOTOP1010模板合约   
 ` ` `
 Factory.deployContract('ISOTO1010')   
 ` ` `
