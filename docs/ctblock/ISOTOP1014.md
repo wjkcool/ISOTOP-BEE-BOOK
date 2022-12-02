@@ -21,12 +21,10 @@ RPC URL:   https://ctblock.cn/blockChain
 ![如图所示](https://upload.cc/i1/2022/11/10/2yaUFs.png)
 
 
-另外写Dapp的前端，使用IISOTOP1010合约时，需要用到`ethers.js`。
+另外写Dapp的前端，使用IISOTOP1015合约时，需要用到`ethers.js`。
 
 
-## 1. ethers.js简述
-
-
+##  1. ethers.js简述
 
 `ethers.js`是一个完整而紧凑的开源库，用于与以太坊区块链及其生态系统进行交互。
 
@@ -39,14 +37,17 @@ RPC URL:   https://ctblock.cn/blockChain
 3. 原生支持`ENS`。
 
 使用方法也很简单
+
 ``` js
+
 import { ethers } from "ethers";
+
 ```
 
 ## 2 . 获得工厂合约对象
 
 
-1. 要使用IISOTOP1010合约，首先需要通过DDS系统获得**工厂合约地址**`FactoryContractAddr`
+1. 要使用IISOTOP1015合约，首先需要通过DDS系统获得**工厂合约地址**`FactoryContractAddr`
 ```js
     const Provider = new ethers.providers.Web3Provider(window.ethereum);
     const Signer = Provider.getSigner();
@@ -72,48 +73,40 @@ import { ethers } from "ethers";
                           ];
      const FactoryContractAddr = '0x21264AbA1FdDECA4d89a992729b25Bd9060A4beE';
      const Factory = new ethers.Contract(FactoryContractAddr, FactoryABI, Signer);
-     let waiter = await Factory.deployContract('ISOTOP1010');
+     let waiter = await Factory.deployContract('ISOTOP1015');
      waiter.wait();
  ```
  其中`FactoryContractAddr`是工厂合约地址，`Factory`是生成的工厂合约对象
 
 ##  3. 查询子合约地址并获得`IISOTOP`对象
 
-然后查询子合约地址，使用`IISOTOP1014.getContractsDeployed()`方法获得`IISOTOP1014Addr`
+然后查询子合约地址，使用`IISOTOP1015.getContractsDeployed()`方法获得`IISOTOP1015Addr`
 
 ```js
 
-let IISOTOP1014AddrArray = new Array();
+let IISOTOP1015AddrArray = new Array();
 
-IISOTOP1014AddrArray = await Factory.getContractsDeployed();
+IISOTOP1015AddrArray = await Factory.getContractsDeployed();
 
-IISOTOP1014Addr = IISOTOP1014AddrArray[IISOTOP1014AddrArray.length-1];
+IISOTOP1015Addr = IISOTOP1015AddrArray[IISOTOP1015AddrArray.length-1];
 
 ```
 
-之后根据`IISOTOP1014Addr`，`IISOTOP1014ABI`，`Signer`获得**子合约对象**`IISOTOP`，就可以调用它的各种方法了
+之后根据`IISOTOP1015Addr`获得对象`IISOTOP`，就可以调用它的各种方法了
 
 ```js
 
-const IISOTOP1014ABI = ["function mint(address, uint256) external",
-
-//......此处省略
-
-"function balanceOf(address) external view returns (uint256)"
-
-];
-
-const IISOTOP = new ethers.Contract(IISOTOP1014Addr, IISOTOP1014ABI, Signer);
+const IISOTOP = new ethers.Contract(IISOTOP1015Addr, IISOTOP1015ABI, Signer);
 
 ```
 
 ##  4. 铸造NFT
 
-获得NFT子合约地址之后，就可以调用IISOTOP1014合约下面的各种方法了，比如mint`IISOTOP.mint(address, uint) `
+获得NFT子合约地址之后，就可以调用IISOTOP1015合约下面的各种方法了，比如mint`IISOTOP.mint(address, uint) `
 
 ```js
 
-let waiter = await IISOTOP.mint(address,5) ; //铸造5个nft
+let waiter = await IISOTOP.mint(MyAddr1,5) ; //铸造5个nft
 
 await waiter.wait()
 

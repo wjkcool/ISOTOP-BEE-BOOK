@@ -18,12 +18,9 @@ RPC URL:   https://ctblock.cn/blockChain
 ![如图所示](https://upload.cc/i1/2022/11/10/2yaUFs.png)
 
 
-另外写Dapp的前端，使用IISOTOP1010合约时，需要用到`ethers.js`。
+另外写Dapp的前端，使用IISOTOP1012合约时，需要用到`ethers.js`。
 
-
-## 1. ethers.js简述
-
-
+##  1. ethers.js简述
 
 `ethers.js`是一个完整而紧凑的开源库，用于与以太坊区块链及其生态系统进行交互。
 
@@ -36,14 +33,17 @@ RPC URL:   https://ctblock.cn/blockChain
 3. 原生支持`ENS`。
 
 使用方法也很简单
+
 ``` js
+
 import { ethers } from "ethers";
+
 ```
 
 ## 2 . 获得工厂合约对象
 
 
-1. 要使用IISOTOP1010合约，首先需要通过DDS系统获得**工厂合约地址**`FactoryContractAddr`
+1. 要使用IISOTOP1012合约，首先需要通过DDS系统获得**工厂合约地址**`FactoryContractAddr`
 ```js
     const Provider = new ethers.providers.Web3Provider(window.ethereum);
     const Signer = Provider.getSigner();
@@ -69,7 +69,7 @@ import { ethers } from "ethers";
                           ];
      const FactoryContractAddr = '0x21264AbA1FdDECA4d89a992729b25Bd9060A4beE';
      const Factory = new ethers.Contract(FactoryContractAddr, FactoryABI, Signer);
-     let waiter = await Factory.deployContract('ISOTOP1010');
+     let waiter = await Factory.deployContract('ISOTOP1012');
      waiter.wait();
  ```
  其中`FactoryContractAddr`是工厂合约地址，`Factory`是生成的工厂合约对象
@@ -103,6 +103,7 @@ const IISOTOP1012ABI = ["function mint(address, uint256) external",
 const IISOTOP = new ethers.Contract(IISOTOP1012Addr, IISOTOP1012ABI, Signer);
 
 ```
+
 
 ##  4. 铸造NFT
 
