@@ -57,6 +57,12 @@ interface IDDS {
         view
         returns (string[] memory);
 
+    function setValue(
+        bytes memory input,
+        bytes memory mark,
+        bytes memory value
+    ) external pure returns (bytes memory output);
+
     function toAddress(bytes memory b) external pure returns (address addr);
 
     function toInt(bytes calldata b) external pure returns (uint256 value);
