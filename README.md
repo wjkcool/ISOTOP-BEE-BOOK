@@ -29,6 +29,13 @@
 2. DDS : 0x222d6d17f1f6967b81E40624fe6176b7be225BEE  
 3. VRF: 0xe7582ab98aFB2DC7f84d5334fBebD18824C83bEE  
 4. Factory: 0xecbf7436904B8De23f69dA6962f29352Cc9f8bEE 
+其中，Factory已经注册ISOTOP1010-1015,1021,1022 合约  
+
+数图链core，因为与etherum不兼容，只能单独部署一套地址：
+1. DDS：cfx:acez9hfj5bds2sycn72k32gbrtwmp5x5mutujg1htg 
+2. Factory：cfx:acgs1aj8cj6ah5ckzfdwus5dg880hzhvu643eum0cm   
+其中，Factory已经注册ISOTOP1010-1013,1021,1022 合约  
+
 ***
 ## 部署链：
 1. 测试链：文昌链Testnet，Arbitrum  
