@@ -104,3 +104,38 @@ Factory.deployContract('ISOTO1021')
 
 
 last updated: 2022.12.02
+
+## WEB3会员卡接口说明：   
+ISOTOP1021 & ISOTOP1022
+
+```
+            # 创建一个1022合约
+            clone22 = ISOTOP1022.at(factory.getLastDeployed(addr(consumer)))
+
+            # 初始化，名字，代号，baseURI，detailsURI，总积分数量，管理员是consumer
+            clone22.init("Coffee-Cup-Card", "CCC", "base/",
+                         "details", 10000, addr(consumer))
+
+            # 在全局的DDS数据库里面定制token的名字。 第一个参数必须是初始化的name.symbol。第二个参数是TOKEN_NAME。 第三个参数是一个bytes类型，需要把字符串转化成bytes
+            dds.put("Coffee-Cup-Card.CCC", 'TOKEN_NAME',
+                    str_to_bytes('咖啡杯卡'), addr(consumer))
+
+            # 在全局的DDS数据库里面定制token的图片。第一个和第二个参数同上。第三个参数是一个SVG文件的内容，读取后整个保存到DDS里面
+            # Note：SVG文件的内容中包含有[TOKEN_BALANCE]这个字段，会被合约自动替换为当前的积分value数字
+            with open('coffee500.svg') as f:
+                dds.put("Coffee-Cup-Card.CCC", 'TOKEN_IMAGE',
+                        str_to_bytes(f.read()), addr(consumer))
+
+            # 同上设置积分的名称和图片
+            dds.put("Coffee-Cup-Card.CCC", 'SLOT_NAME',
+                    str_to_bytes('积分豆'), addr(consumer))
+            with open('points.svg') as f:
+                dds.put("Coffee-Cup-Card.CCC", 'SLOT_IMAGE',
+                        str_to_bytes(f.read()), addr(consumer))
+
+            # 给手机号为IWAN的用户铸造一个会员卡，初始积分100分
+            clone22.mint(iwan, IWAN, 100, addr(consumer))
+
+            # 给手机号为CAO的用户铸造一个会员卡，初始积分100份
+            clone22.mint(creator, CAO, 100, addr(consumer))
+```
