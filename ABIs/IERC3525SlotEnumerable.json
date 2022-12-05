@@ -1,0 +1,1262 @@
+{
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "approved",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "approved",
+          "type": "bool"
+        }
+      ],
+      "name": "ApprovalForAll",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_operator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "ApprovalValue",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_oldSlot",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_newSlot",
+          "type": "uint256"
+        }
+      ],
+      "name": "SlotChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_fromTokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_toTokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "TransferValue",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_operator",
+          "type": "address"
+        }
+      ],
+      "name": "allowance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_operator",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "balance",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getApproved",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        }
+      ],
+      "name": "isApprovedForAll",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "ownerOf",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "safeTransferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "safeTransferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "_approved",
+          "type": "bool"
+        }
+      ],
+      "name": "setApprovalForAll",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_index",
+          "type": "uint256"
+        }
+      ],
+      "name": "slotByIndex",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "slotCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "slotOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "interfaceId",
+          "type": "bytes4"
+        }
+      ],
+      "name": "supportsInterface",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenByIndex",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_slot",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_index",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenInSlotByIndex",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenOfOwnerByIndex",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_slot",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenSupplyInSlot",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_fromTokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_toTokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "valueDecimals",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "allSourcePaths": {
+    "16": "/Users/iwan/.brownie/packages/OpenZeppelin/openzeppelin-contracts@4.7.3/contracts/utils/introspection/IERC165.sol",
+    "21": "contracts/ERC3525/interfaces/IERC3525.sol",
+    "25": "contracts/ERC3525/interfaces/IERC3525SlotEnumerable.sol",
+    "6": "/Users/iwan/.brownie/packages/OpenZeppelin/openzeppelin-contracts@4.7.3/contracts/token/ERC721/IERC721.sol",
+    "9": "/Users/iwan/.brownie/packages/OpenZeppelin/openzeppelin-contracts@4.7.3/contracts/token/ERC721/extensions/IERC721Enumerable.sol"
+  },
+  "ast": {
+    "absolutePath": "contracts/ERC3525/interfaces/IERC3525SlotEnumerable.sol",
+    "exportedSymbols": {
+      "IERC165": [
+        5969
+      ],
+      "IERC3525": [
+        3885
+      ],
+      "IERC3525SlotEnumerable": [
+        4286
+      ],
+      "IERC721": [
+        5593
+      ],
+      "IERC721Enumerable": [
+        5443
+      ]
+    },
+    "id": 4287,
+    "license": "CC0-1.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4246,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "35:23:25"
+      },
+      {
+        "absolutePath": "contracts/ERC3525/interfaces/IERC3525.sol",
+        "file": "./IERC3525.sol",
+        "id": 4247,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 4287,
+        "sourceUnit": 3886,
+        "src": "60:24:25",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/iwan/.brownie/packages/OpenZeppelin/openzeppelin-contracts@4.7.3/contracts/interfaces/IERC721Enumerable.sol",
+        "file": "@openzeppelin/contracts/interfaces/IERC721Enumerable.sol",
+        "id": 4248,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 4287,
+        "sourceUnit": 5456,
+        "src": "85:66:25",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 4250,
+              "name": "IERC3525",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 3885,
+              "src": "521:8:25"
+            },
+            "id": 4251,
+            "nodeType": "InheritanceSpecifier",
+            "src": "521:8:25"
+          },
+          {
+            "baseName": {
+              "id": 4252,
+              "name": "IERC721Enumerable",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 5443,
+              "src": "531:17:25"
+            },
+            "id": 4253,
+            "nodeType": "InheritanceSpecifier",
+            "src": "531:17:25"
+          }
+        ],
+        "canonicalName": "IERC3525SlotEnumerable",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 4249,
+          "nodeType": "StructuredDocumentation",
+          "src": "153:331:25",
+          "text": " @title ERC-3525 Semi-Fungible Token Standard, optional extension for slot enumeration\n @dev Interfaces for any contract that wants to support enumeration of slots as well as tokens\n  with the same slot.\n  See https://eips.ethereum.org/EIPS/eip-3525\n Note: the ERC-165 identifier for this interface is 0x3b741b9e."
+        },
+        "fullyImplemented": false,
+        "id": 4286,
+        "linearizedBaseContracts": [
+          4286,
+          5443,
+          3885,
+          5593,
+          5969
+        ],
+        "name": "IERC3525SlotEnumerable",
+        "nameLocation": "495:22:25",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 4254,
+              "nodeType": "StructuredDocumentation",
+              "src": "555:121:25",
+              "text": " @notice Get the total amount of slots stored by the contract.\n @return The total amount of slots"
+            },
+            "functionSelector": "ed08fa80",
+            "id": 4259,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "slotCount",
+            "nameLocation": "690:9:25",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4255,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "699:2:25"
+            },
+            "returnParameters": {
+              "id": 4258,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4257,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4259,
+                  "src": "725:7:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4256,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "725:7:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "724:9:25"
+            },
+            "scope": 4286,
+            "src": "681:53:25",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 4260,
+              "nodeType": "StructuredDocumentation",
+              "src": "740:196:25",
+              "text": " @notice Get the slot at the specified index of all slots stored by the contract.\n @param _index The index in the slot list\n @return The slot at `index` of all slots."
+            },
+            "functionSelector": "993bef8d",
+            "id": 4267,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "slotByIndex",
+            "nameLocation": "950:11:25",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4263,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4262,
+                  "mutability": "mutable",
+                  "name": "_index",
+                  "nameLocation": "970:6:25",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4267,
+                  "src": "962:14:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4261,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "962:7:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "961:16:25"
+            },
+            "returnParameters": {
+              "id": 4266,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4265,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4267,
+                  "src": "1001:7:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4264,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1001:7:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1000:9:25"
+            },
+            "scope": 4286,
+            "src": "941:69:25",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 4268,
+              "nodeType": "StructuredDocumentation",
+              "src": "1016:201:25",
+              "text": " @notice Get the total amount of tokens with the same slot.\n @param _slot The slot to query token supply for\n @return The total amount of tokens with the specified `_slot`"
+            },
+            "functionSelector": "4f8a0f83",
+            "id": 4275,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "tokenSupplyInSlot",
+            "nameLocation": "1231:17:25",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4271,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4270,
+                  "mutability": "mutable",
+                  "name": "_slot",
+                  "nameLocation": "1257:5:25",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4275,
+                  "src": "1249:13:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4269,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1249:7:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1248:15:25"
+            },
+            "returnParameters": {
+              "id": 4274,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4273,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4275,
+                  "src": "1287:7:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4272,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1287:7:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1286:9:25"
+            },
+            "scope": 4286,
+            "src": "1222:74:25",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 4276,
+              "nodeType": "StructuredDocumentation",
+              "src": "1302:275:25",
+              "text": " @notice Get the token at the specified index of all tokens with the same slot.\n @param _slot The slot to query tokens with\n @param _index The index in the token list of the slot\n @return The token ID at `_index` of all tokens with `_slot`"
+            },
+            "functionSelector": "00cd0110",
+            "id": 4285,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "tokenInSlotByIndex",
+            "nameLocation": "1591:18:25",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4281,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4278,
+                  "mutability": "mutable",
+                  "name": "_slot",
+                  "nameLocation": "1618:5:25",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4285,
+                  "src": "1610:13:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4277,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1610:7:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4280,
+                  "mutability": "mutable",
+                  "name": "_index",
+                  "nameLocation": "1633:6:25",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4285,
+                  "src": "1625:14:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4279,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1625:7:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1609:31:25"
+            },
+            "returnParameters": {
+              "id": 4284,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4283,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4285,
+                  "src": "1688:7:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4282,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1688:7:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1687:9:25"
+            },
+            "scope": 4286,
+            "src": "1582:115:25",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 4287,
+        "src": "485:1214:25",
+        "usedErrors": []
+      }
+    ],
+    "src": "35:1665:25"
+  },
+  "bytecode": "",
+  "bytecodeSha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+  "compiler": {
+    "evm_version": "istanbul",
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "version": "0.8.13+commit.abaa5c0e"
+  },
+  "contractName": "IERC3525SlotEnumerable",
+  "coverageMap": {
+    "branches": {},
+    "statements": {}
+  },
+  "dependencies": [
+    "OpenZeppelin/openzeppelin-contracts@4.7.3/IERC165",
+    "IERC3525",
+    "OpenZeppelin/openzeppelin-contracts@4.7.3/IERC721",
+    "OpenZeppelin/openzeppelin-contracts@4.7.3/IERC721Enumerable"
+  ],
+  "deployedBytecode": "",
+  "deployedSourceMap": "",
+  "language": "Solidity",
+  "natspec": {
+    "details": "Interfaces for any contract that wants to support enumeration of slots as well as tokens  with the same slot.  See https://eips.ethereum.org/EIPS/eip-3525 Note: the ERC-165 identifier for this interface is 0x3b741b9e.",
+    "kind": "dev",
+    "methods": {
+      "allowance(uint256,address)": {
+        "notice": "Get the maximum value of a token that an operator is allowed to manage.",
+        "params": {
+          "_operator": "The address of an operator",
+          "_tokenId": "The token for which to query the allowance"
+        },
+        "returns": {
+          "_0": "The current approval value of `_tokenId` that `_operator` is allowed to manage"
+        }
+      },
+      "approve(address,uint256)": {
+        "details": "Gives permission to `to` to transfer `tokenId` token to another account. The approval is cleared when the token is transferred. Only a single account can be approved at a time, so approving the zero address clears previous approvals. Requirements: - The caller must own the token or be an approved operator. - `tokenId` must exist. Emits an {Approval} event."
+      },
+      "approve(uint256,address,uint256)": {
+        "details": "MUST revert unless caller is the current owner, an authorized operator, or the approved  address for `_tokenId`.  MUST emit ApprovalValue event.",
+        "notice": "Allow an operator to manage the value of a token, up to the `_value` amount.",
+        "params": {
+          "_operator": "The operator to be approved",
+          "_tokenId": "The token to approve",
+          "_value": "The maximum value of `_toTokenId` that `_operator` is allowed to manage"
+        }
+      },
+      "balanceOf(address)": {
+        "details": "Returns the number of tokens in ``owner``'s account."
+      },
+      "balanceOf(uint256)": {
+        "notice": "Get the value of a token.",
+        "params": {
+          "_tokenId": "The token for which to query the balance"
+        },
+        "returns": {
+          "_0": "The value of `_tokenId`"
+        }
+      },
+      "getApproved(uint256)": {
+        "details": "Returns the account approved for `tokenId` token. Requirements: - `tokenId` must exist."
+      },
+      "isApprovedForAll(address,address)": {
+        "details": "Returns if the `operator` is allowed to manage all of the assets of `owner`. See {setApprovalForAll}"
+      },
+      "ownerOf(uint256)": {
+        "details": "Returns the owner of the `tokenId` token. Requirements: - `tokenId` must exist."
+      },
+      "safeTransferFrom(address,address,uint256)": {
+        "details": "Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients are aware of the ERC721 protocol to prevent tokens from being forever locked. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must have been allowed to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer. Emits a {Transfer} event."
+      },
+      "safeTransferFrom(address,address,uint256,bytes)": {
+        "details": "Safely transfers `tokenId` token from `from` to `to`. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer. Emits a {Transfer} event."
+      },
+      "setApprovalForAll(address,bool)": {
+        "details": "Approve or remove `operator` as an operator for the caller. Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller. Requirements: - The `operator` cannot be the caller. Emits an {ApprovalForAll} event."
+      },
+      "slotByIndex(uint256)": {
+        "notice": "Get the slot at the specified index of all slots stored by the contract.",
+        "params": {
+          "_index": "The index in the slot list"
+        },
+        "returns": {
+          "_0": "The slot at `index` of all slots."
+        }
+      },
+      "slotCount()": {
+        "notice": "Get the total amount of slots stored by the contract.",
+        "returns": {
+          "_0": "The total amount of slots"
+        }
+      },
+      "slotOf(uint256)": {
+        "notice": "Get the slot of a token.",
+        "params": {
+          "_tokenId": "The identifier for a token"
+        },
+        "returns": {
+          "_0": "The slot of the token"
+        }
+      },
+      "supportsInterface(bytes4)": {
+        "details": "Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section] to learn more about how these ids are created. This function call must use less than 30 000 gas."
+      },
+      "tokenByIndex(uint256)": {
+        "details": "Returns a token ID at a given `index` of all the tokens stored by the contract. Use along with {totalSupply} to enumerate all tokens."
+      },
+      "tokenInSlotByIndex(uint256,uint256)": {
+        "notice": "Get the token at the specified index of all tokens with the same slot.",
+        "params": {
+          "_index": "The index in the token list of the slot",
+          "_slot": "The slot to query tokens with"
+        },
+        "returns": {
+          "_0": "The token ID at `_index` of all tokens with `_slot`"
+        }
+      },
+      "tokenOfOwnerByIndex(address,uint256)": {
+        "details": "Returns a token ID owned by `owner` at a given `index` of its token list. Use along with {balanceOf} to enumerate all of ``owner``'s tokens."
+      },
+      "tokenSupplyInSlot(uint256)": {
+        "notice": "Get the total amount of tokens with the same slot.",
+        "params": {
+          "_slot": "The slot to query token supply for"
+        },
+        "returns": {
+          "_0": "The total amount of tokens with the specified `_slot`"
+        }
+      },
+      "totalSupply()": {
+        "details": "Returns the total amount of tokens stored by the contract."
+      },
+      "transferFrom(address,address,uint256)": {
+        "details": "Transfers `tokenId` token from `from` to `to`. WARNING: Usage of this method is discouraged, use {safeTransferFrom} whenever possible. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. Emits a {Transfer} event."
+      },
+      "transferFrom(uint256,uint256,uint256)": {
+        "details": "Caller MUST be the current owner, an authorized operator or an operator who has been  approved the whole `_fromTokenId` or part of it.  MUST revert if `_fromTokenId` or `_toTokenId` is zero token id or does not exist.  MUST revert if slots of `_fromTokenId` and `_toTokenId` do not match.  MUST revert if `_value` exceeds the balance of `_fromTokenId` or its allowance to the  operator.  MUST emit `TransferValue` event.",
+        "notice": "Transfer value from a specified token to another specified token with the same slot.",
+        "params": {
+          "_fromTokenId": "The token to transfer value from",
+          "_toTokenId": "The token to transfer value to",
+          "_value": "The transferred value"
+        }
+      },
+      "valueDecimals()": {
+        "notice": "Get the number of decimals the token uses for value - e.g. 6, means the user  representation of the value of a token can be calculated by dividing it by 1,000,000.  Considering the compatibility with third-party wallets, this function is defined as  `valueDecimals()` instead of `decimals()` to avoid conflict with ERC20 tokens.",
+        "returns": {
+          "_0": "The number of decimals for value"
+        }
+      }
+    },
+    "title": "ERC-3525 Semi-Fungible Token Standard, optional extension for slot enumeration",
+    "version": 1
+  },
+  "offset": [
+    485,
+    1699
+  ],
+  "opcodes": "",
+  "pcMap": {},
+  "sha1": "c224d7456569c42ad1f4a6ed22becc1636f76088",
+  "source": "//SPDX-License-Identifier: CC0-1.0\npragma solidity ^0.8.0;\n\nimport \"./IERC3525.sol\";\nimport \"@openzeppelin/contracts/interfaces/IERC721Enumerable.sol\";\n\n/**\n * @title ERC-3525 Semi-Fungible Token Standard, optional extension for slot enumeration\n * @dev Interfaces for any contract that wants to support enumeration of slots as well as tokens\n *  with the same slot.\n *  See https://eips.ethereum.org/EIPS/eip-3525\n * Note: the ERC-165 identifier for this interface is 0x3b741b9e.\n */\ninterface IERC3525SlotEnumerable is IERC3525, IERC721Enumerable {\n    /**\n     * @notice Get the total amount of slots stored by the contract.\n     * @return The total amount of slots\n     */\n    function slotCount() external view returns (uint256);\n\n    /**\n     * @notice Get the slot at the specified index of all slots stored by the contract.\n     * @param _index The index in the slot list\n     * @return The slot at `index` of all slots.\n     */\n    function slotByIndex(uint256 _index) external view returns (uint256);\n\n    /**\n     * @notice Get the total amount of tokens with the same slot.\n     * @param _slot The slot to query token supply for\n     * @return The total amount of tokens with the specified `_slot`\n     */\n    function tokenSupplyInSlot(uint256 _slot) external view returns (uint256);\n\n    /**\n     * @notice Get the token at the specified index of all tokens with the same slot.\n     * @param _slot The slot to query tokens with\n     * @param _index The index in the token list of the slot\n     * @return The token ID at `_index` of all tokens with `_slot`\n     */\n    function tokenInSlotByIndex(uint256 _slot, uint256 _index)\n        external\n        view\n        returns (uint256);\n}\n",
+  "sourceMap": "",
+  "sourcePath": "contracts/ERC3525/interfaces/IERC3525SlotEnumerable.sol",
+  "type": "interface"
+}
