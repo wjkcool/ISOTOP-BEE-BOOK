@@ -31,15 +31,11 @@
 4. Factory: 0xecbf7436904B8De23f69dA6962f29352Cc9f8bEE 
 其中，Factory已经注册ISOTOP1010-1015,1021,1022 合约  
 
-数图链core，因为与etherum不兼容，只能单独部署一套地址：
-1. DDS：cfx:acez9hfj5bds2sycn72k32gbrtwmp5x5mutujg1htg 
-2. Factory：cfx:acgs1aj8cj6ah5ckzfdwus5dg880hzhvu643eum0cm   
+数图链core地址：
+1. DDS testnet: cfxtest:acfkpsbbgwsuvw0mfw1d2uapus6pp1zkf6x7rfpjkg  
+2. Factory：cfxtest:accf0yubrn8bpyrmsua8frxzbk9ety9jc6dd1hg68b  
 其中，Factory已经注册ISOTOP1010-1013,1021,1022 合约  
 
-***
-## 部署链：
-1. 测试链：文昌链Testnet，Arbitrum  
-2. 正式链：文昌链，数图链eSpace，草田链 
 ***
 
 ## 使用方式
