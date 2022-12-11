@@ -27,12 +27,12 @@
 ***
 1. Deployer : 0x18C353Ca538702f862526Cd2DEeabA35f0ED3BEE  
 2. DDS : 0x222d6d17f1f6967b81E40624fe6176b7be225BEE  
-3. Factory:  DDS_FACTORY_ADDRESS
+3. Factory:  "DDS_FACTORY_ADDRESS"
 其中，Factory已经注册ISOTOP1010-1015,1021,1022 合约  
 
 数图链core地址：
 1. DDS testnet: cfxtest:acfkpsbbgwsuvw0mfw1d2uapus6pp1zkf6x7rfpjkg  
-2. Factory：DDS_FACTORY_ADDRESS
+2. Factory："DDS_FACTORY_ADDRESS"
 其中，Factory已经注册ISOTOP1010-1015,1021,1022 合约  
 
 ***
@@ -134,3 +134,14 @@ ISOTOP1021 & ISOTOP1022
             # 给手机号为CAO的用户铸造一个会员卡，初始积分100份
             clone22.mint(creator, CAO, 100, addr(consumer))
 ```
+
+
+## ConfluxWeb3 脚本说明：   
+包装了Conflux的python SDK脚本，主要支持功能：  
+1. 初始化。 支持test测试网和main主网core   
+2. 创建账户，返回地址和私钥   
+3. 根据私钥创建账户   
+4. 根据同名ABI文件和地址加载合约   
+
+更多conflux SDK请参考：https://python-conflux-sdk.readthedocs.io/zh_CN/latest/README.html
+
