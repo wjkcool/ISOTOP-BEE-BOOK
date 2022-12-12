@@ -58,6 +58,9 @@ class ConfluxWeb3:
     def loadAccount(self, private_key):
         return self.w3.account.from_key(private_key)
 
+    def setDefaultAccount(self, acct):
+        self.w3.cfx.default_account = acct
+
     def loadContract(self, contract: str, addr: str):
         with open('abi/'+contract+'.json') as f:
             meta = json.load(f)
