@@ -45,8 +45,11 @@ class ConfluxWeb3:
         with open('abi/DDS.json') as f:
             meta = json.load(f)
             self.dds = self.w3.cfx.contract(address=self.dds, abi=meta["abi"])
-        admin = self.w3.account.from_key('0x' + os.getenv('ADMIN_PRIVATE_KEY'))
-        self.w3.cfx.default_account = admin
+        self.admin = self.w3.account.from_key(
+            '0x' + os.getenv('ADMIN_PRIVATE_KEY'))
+        self.consumer = self.w3.account.from_key(
+            '0x' + os.getenv('CONSUMER_PRIVATE_KEY'))
+        self.w3.cfx.default_account = self.consumer
 
     def createAccount(self):
         acct = self.web3.account.create()
@@ -55,7 +58,7 @@ class ConfluxWeb3:
     def loadAccount(self, private_key):
         return self.w3.account.from_key(private_key)
 
-    def loadContract(self, addr, contract: str):
+    def loadContract(self, contract: str, addr: str):
         with open('abi/'+contract+'.json') as f:
             meta = json.load(f)
         cd = self.w3.cfx.contract(address=addr, abi=meta["abi"])
