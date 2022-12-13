@@ -27,12 +27,14 @@
 ***
 1. Deployer : 0x18C353Ca538702f862526Cd2DEeabA35f0ED3BEE  
 2. DDS : 0x222d6d17f1f6967b81E40624fe6176b7be225BEE  
-3. Factory:  "DDS_FACTORY_ADDRESS"   
+3. Factory:  "BEE_FACTORY_ADDRESS"   
 其中，Factory已经注册ISOTOP1010-1015,1021,1022 合约  
 
 数图链core地址：
 1. DDS testnet: cfxtest:acfkpsbbgwsuvw0mfw1d2uapus6pp1zkf6x7rfpjkg  
-2. Factory："DDS_FACTORY_ADDRESS"   
+2. DDS core: cfx:acgbcn8k6cd7eayp9s59st3bnst6ue1grjjcmp5tzp
+3. Factory："BEE_FACTORY_ADDRESS"   
+4. TGas: "BEE_TGAS_ADDRESS"
 其中，Factory已经注册ISOTOP1010-1015,1021,1022 合约  
 
 ***
