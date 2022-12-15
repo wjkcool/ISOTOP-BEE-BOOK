@@ -9,12 +9,6 @@ import "./IDateTime.sol";
 import "./IDDS.sol";
 import "./ITGas.sol";
 
-// angency address = admin
-address constant BEE_ISOTOP_ADDRESS = 0x7B0dc23E87febF1D053E7Df9aF4cce30F21fAe9C;
-// contributor address = iwan
-address constant BEE_IWAN_ADDRESS = 0x8Ce68C53Ec6C8A55A32dD6c84c9207BFbd901eaB;
-address constant BEE_CREATOR_ADDRESS = 0xAb1fdD3F84b2019BEF47939E66fb6194532f9640;
-
 interface ISOTOP_CONTRACT {
     function contractName() external returns (string memory);
 }

@@ -5,6 +5,12 @@ pragma solidity ^0.8.4;
 
 address constant BEE_DDS_ADDRESS = 0x222d6d17f1f6967b81E40624fe6176b7be225BEE;
 
+// Conflux core DDS
+// address constant BEE_DDS_ADDRESS = 0x8C112fc9e087D2028CFbb7f73F215B9Fc812e66a;
+
+//Conflux test DDS
+// address constant BEE_DDS_ADDRESS = 0x8a963821349d08caCa2caE3c400C83b8C65eA92F;
+
 /// @title PLAN-BEE IDDS Domain Data System 域名数据系统
 /// @author Iwan Cao
 /// @notice 开放使用合约，任何人可以存储自己的数据

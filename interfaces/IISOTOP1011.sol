@@ -22,13 +22,12 @@ pragma solidity ^0.8.4;
 
  */
 
+import "../contracts/ERC721A/extensions/IERC721ABurnable.sol";
 import "./IISOTOP1010.sol";
 
-interface IISOTOP1011 is IISOTOP1010 {
-    /// @dev 新增接口
-    function burn(uint256 tokenId) external;
-
-    function exists(uint256 tokenId) external view returns (bool);
-
-    function burned() external view returns (uint256);
+interface IISOTOP1011 is IISOTOP1010, IERC721ABurnable {
+    // /// @dev 新增接口
+    // function burn(uint256 tokenId) external;
+    // function exists(uint256 tokenId) external view returns (bool);
+    // function burned() external view returns (uint256);
 }

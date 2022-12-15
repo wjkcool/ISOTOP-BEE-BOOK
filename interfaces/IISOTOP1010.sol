@@ -21,17 +21,10 @@ pragma solidity ^0.8.4;
 
  */
 
-import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
+import "../contracts/ERC721A/extensions/IERC721AQueryable.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
-interface IISOTOP1010 is
-    IERC721,
-    IERC721Receiver,
-    IERC721Metadata,
-    IERC721Enumerable
-{
+interface IISOTOP1010 is IERC721AQueryable {
     event baseURIChanged(string uri);
     event detailsURIChanged(string uri);
     event gasLoaded(address gasManager);
@@ -82,4 +75,8 @@ interface IISOTOP1010 is
      * Can only be called by the current owner.
      */
     function transferOwnership(address newOwner) external;
+
+    function mint(address _to, uint256 quantity) external;
+
+    function safeMint(address _to, uint256 quantity) external;
 }

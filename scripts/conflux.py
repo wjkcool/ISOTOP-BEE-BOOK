@@ -47,9 +47,13 @@ class ConfluxWeb3:
             self.dds = self.w3.cfx.contract(address=self.dds, abi=meta["abi"])
         self.admin = self.w3.account.from_key(
             '0x' + os.getenv('ADMIN_PRIVATE_KEY'))
+        self.creator = self.w3.account.from_key(
+            '0x' + os.getenv('CREATOR_PRIVATE_KEY'))
         self.consumer = self.w3.account.from_key(
             '0x' + os.getenv('CONSUMER_PRIVATE_KEY'))
-        self.w3.cfx.default_account = self.consumer
+        self.iwan = self.w3.account.from_key(
+            '0x' + os.getenv('IWANCAO_PRIVATE_KEY'))
+        self.w3.cfx.default_account = self.admin
 
     def createAccount(self):
         acct = self.web3.account.create()
@@ -96,8 +100,12 @@ class ConfluxWeb3:
         return self.dds.functions.get('ISOTOP', key).call()
 
     def delDDS(self, key: str):
-        self.dds.functions.get('ISOTOP', bytes()).call()
+        self.dds.functions.put('ISOTOP', key, bytes()).transact().executed()
         print(f'DDS[{key}] deleted')
+
+    def readDDSAddress(self, key: str):
+        ret = self.dds.functions.toAddress(self.readDDS(key)).call()
+        return ret, self.w3.address(ret).hex_address
 
     def regFactory(self, contract: str, addr: str):
         factory = self.loadFromDDS('Factory')
