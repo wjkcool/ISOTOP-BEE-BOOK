@@ -1,0 +1,1349 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "ApprovalCallerNotOwnerNorApproved",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ApprovalQueryForNonexistentToken",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "BalanceQueryForZeroAddress",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidQueryRange",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "MintERC2309QuantityExceedsLimit",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "MintToZeroAddress",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "MintZeroQuantity",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "OwnerQueryForNonexistentToken",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "OwnershipNotInitializedForExtraData",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "SetUserCallerNotOwnerNorApproved",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "TransferCallerNotOwnerNorApproved",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "TransferFromIncorrectOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "TransferToNonERC721ReceiverImplementer",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "TransferToZeroAddress",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "URIQueryForNonexistentToken",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "approved",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "approved",
+          "type": "bool"
+        }
+      ],
+      "name": "ApprovalForAll",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "fromTokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "toTokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        }
+      ],
+      "name": "ConsecutiveTransfer",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "expires",
+          "type": "uint64"
+        }
+      ],
+      "name": "UpdateUser",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "uri",
+          "type": "string"
+        }
+      ],
+      "name": "baseURIChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "uri",
+          "type": "string"
+        }
+      ],
+      "name": "detailsURIChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "gasManager",
+          "type": "address"
+        }
+      ],
+      "name": "gasLoaded",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "Details",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "balance",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "contractName",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "explicitOwnershipOf",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "internalType": "uint64",
+              "name": "startTimestamp",
+              "type": "uint64"
+            },
+            {
+              "internalType": "bool",
+              "name": "burned",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint24",
+              "name": "extraData",
+              "type": "uint24"
+            }
+          ],
+          "internalType": "struct IERC721A.TokenOwnership",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "tokenIds",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "explicitOwnershipsOf",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "internalType": "uint64",
+              "name": "startTimestamp",
+              "type": "uint64"
+            },
+            {
+              "internalType": "bool",
+              "name": "burned",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint24",
+              "name": "extraData",
+              "type": "uint24"
+            }
+          ],
+          "internalType": "struct IERC721A.TokenOwnership[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getApproved",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getTGas",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name_",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "symbol_",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "base_",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "details_",
+          "type": "string"
+        }
+      ],
+      "name": "init",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        }
+      ],
+      "name": "isApprovedForAll",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "quantity",
+          "type": "uint256"
+        }
+      ],
+      "name": "mint",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "ownerOf",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "quantity",
+          "type": "uint256"
+        }
+      ],
+      "name": "safeMint",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "safeTransferFrom",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "safeTransferFrom",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "_approved",
+          "type": "bool"
+        }
+      ],
+      "name": "setApprovalForAll",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "base_",
+          "type": "string"
+        }
+      ],
+      "name": "setBaseURI",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "uri_",
+          "type": "string"
+        }
+      ],
+      "name": "setDetailsURI",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_tgas",
+          "type": "address"
+        }
+      ],
+      "name": "setTGas",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "internalType": "uint64",
+          "name": "expires",
+          "type": "uint64"
+        }
+      ],
+      "name": "setUser",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "interfaceId",
+          "type": "bytes4"
+        }
+      ],
+      "name": "supportsInterface",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "symbol",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenURI",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "tokensOfOwner",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "start",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "stop",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokensOfOwnerIn",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "userExpires",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "userOf",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "ast": {
+    "absolutePath": "interfaces/IISOTOP1012.sol",
+    "exportedSymbols": {
+      "IERC4907A": [
+        1932
+      ],
+      "IERC721A": [
+        2771
+      ],
+      "IERC721AQueryable": [
+        1874
+      ],
+      "IISOTOP1010": [
+        691
+      ],
+      "IISOTOP1012": [
+        735
+      ],
+      "Ownable": [
+        1822
+      ]
+    },
+    "id": 736,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 702,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".4"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "81:23:28"
+      },
+      {
+        "absolutePath": "interfaces/IISOTOP1010.sol",
+        "file": "./IISOTOP1010.sol",
+        "id": 703,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 736,
+        "sourceUnit": 692,
+        "src": "609:27:28",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "contracts/ERC721A/extensions/IERC4907A.sol",
+        "file": "../contracts/ERC721A/extensions/IERC4907A.sol",
+        "id": 704,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 736,
+        "sourceUnit": 1933,
+        "src": "637:55:28",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 705,
+              "name": "IISOTOP1010",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 691,
+              "src": "719:11:28"
+            },
+            "id": 706,
+            "nodeType": "InheritanceSpecifier",
+            "src": "719:11:28"
+          },
+          {
+            "baseName": {
+              "id": 707,
+              "name": "IERC4907A",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 1932,
+              "src": "732:9:28"
+            },
+            "id": 708,
+            "nodeType": "InheritanceSpecifier",
+            "src": "732:9:28"
+          }
+        ],
+        "canonicalName": "IISOTOP1012",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 735,
+        "linearizedBaseContracts": [
+          735,
+          1932,
+          691,
+          1874,
+          2771
+        ],
+        "name": "IISOTOP1012",
+        "nameLocation": "704:11:28",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "baseFunctions": [
+              1915
+            ],
+            "documentation": {
+              "id": 709,
+              "nodeType": "StructuredDocumentation",
+              "src": "748:21:28",
+              "text": "@dev \u65b0\u589e\u529f\u80fd"
+            },
+            "functionSelector": "e030565e",
+            "id": 718,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setUser",
+            "nameLocation": "783:7:28",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 716,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 711,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "808:7:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 718,
+                  "src": "800:15:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 710,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "800:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 713,
+                  "mutability": "mutable",
+                  "name": "user",
+                  "nameLocation": "833:4:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 718,
+                  "src": "825:12:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 712,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "825:7:28",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 715,
+                  "mutability": "mutable",
+                  "name": "expires",
+                  "nameLocation": "854:7:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 718,
+                  "src": "847:14:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  },
+                  "typeName": {
+                    "id": 714,
+                    "name": "uint64",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "847:6:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint64",
+                      "typeString": "uint64"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "790:77:28"
+            },
+            "returnParameters": {
+              "id": 717,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "876:0:28"
+            },
+            "scope": 735,
+            "src": "774:103:28",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "baseFunctions": [
+              1923
+            ],
+            "documentation": {
+              "id": 719,
+              "nodeType": "StructuredDocumentation",
+              "src": "883:146:28",
+              "text": " @dev Returns the user address for `tokenId`.\n The zero address indicates that there is no user or if the user is expired."
+            },
+            "functionSelector": "c2f1f14a",
+            "id": 726,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "userOf",
+            "nameLocation": "1043:6:28",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 722,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 721,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1058:7:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 726,
+                  "src": "1050:15:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 720,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1050:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1049:17:28"
+            },
+            "returnParameters": {
+              "id": 725,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 724,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 726,
+                  "src": "1090:7:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 723,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1090:7:28",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1089:9:28"
+            },
+            "scope": 735,
+            "src": "1034:65:28",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "baseFunctions": [
+              1931
+            ],
+            "documentation": {
+              "id": 727,
+              "nodeType": "StructuredDocumentation",
+              "src": "1105:67:28",
+              "text": " @dev Returns the user's expires of `tokenId`.\n//  "
+            },
+            "functionSelector": "8fc88c48",
+            "id": 734,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "userExpires",
+            "nameLocation": "1186:11:28",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 730,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 729,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1206:7:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 734,
+                  "src": "1198:15:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 728,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1198:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1197:17:28"
+            },
+            "returnParameters": {
+              "id": 733,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 732,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 734,
+                  "src": "1238:7:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 731,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1238:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1237:9:28"
+            },
+            "scope": 735,
+            "src": "1177:70:28",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 736,
+        "src": "694:555:28",
+        "usedErrors": [
+          1831,
+          1896,
+          2571,
+          2574,
+          2577,
+          2580,
+          2583,
+          2586,
+          2589,
+          2592,
+          2595,
+          2598,
+          2601,
+          2604,
+          2607
+        ]
+      }
+    ],
+    "src": "81:1169:28"
+  },
+  "contractName": "IISOTOP1012",
+  "dependencies": [
+    "IERC4907A",
+    "IERC721A",
+    "IERC721AQueryable",
+    "IISOTOP1010"
+  ],
+  "offset": [
+    694,
+    1249
+  ],
+  "sha1": "53c293e5274fe488d3ef2549bbb6bd5a95690488",
+  "source": "// SPDX-License-Identifier: MIT\n// IISOTOP version 0.10\n// Creator: Dr. Zu team\n\npragma solidity ^0.8.4;\n\n/**\n * @dev Interface of ISOTOP1012\uff1a \u589e\u52a0\u53ef\u79df\u7528\u529f\u80fd\n\n\u4e3b\u8981\u529f\u80fd\uff1a\n*\uff09 \u7ed9NFT\u52a0\u6301\u5185\u5bb9\uff1asetBaseURI\n*\uff09 \u94f8\u9020NFT\uff1amint\n*\uff09 \u5b89\u5168\u94f8\u9020NFT\uff08\u68c0\u67e5\u662f\u5426\u53ef\u4ee5\u88ab\u5408\u7ea6\u5730\u5740\u62e5\u6709\uff09\uff1asafeMint\n*\uff09 \u79df\u501f\uff1asetUser\n*\uff09 \u68c0\u67e5\u79df\u501f\u7528\u6237\uff0c\u6709\u6548\u671f\uff1a userOf\n*\uff09 \u9500\u6bc1\uff1aburn\n*\uff09 \u53ef\u67e5\u8be2\u63a5\u53e3\uff1atokenByIndex, tokenOfOwnerByIndex\n*\uff09 \u8f6c\u79fb\uff1atransferFrom\n\n\u8bbe\u8ba1\u8981\u70b9\uff1a\n1\uff09 \u589e\u52a0\u53ef\u79df\u7528\u529f\u80fd\n2)  \u5176\u5b83\u529f\u80fd\u5b8c\u5168\u517c\u5bb9ISOTOP1010\n3\uff09 \u517c\u5bb9ERC721\uff0c ERC4907\n\n */\n\nimport \"./IISOTOP1010.sol\";\nimport \"../contracts/ERC721A/extensions/IERC4907A.sol\";\n\ninterface IISOTOP1012 is IISOTOP1010, IERC4907A {\n    /// @dev \u65b0\u589e\u529f\u80fd\n    function setUser(\n        uint256 tokenId,\n        address user,\n        uint64 expires\n    ) external;\n\n    /**\n     * @dev Returns the user address for `tokenId`.\n     * The zero address indicates that there is no user or if the user is expired.\n     */\n    function userOf(uint256 tokenId) external view returns (address);\n\n    /**\n     * @dev Returns the user's expires of `tokenId`.\n    //  */\n    function userExpires(uint256 tokenId) external view returns (uint256);\n}\n",
+  "type": "interface"
+}

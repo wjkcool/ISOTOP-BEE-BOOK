@@ -1,0 +1,643 @@
+{
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "requestId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256[]",
+          "name": "randomWords",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "RequestFulfilled",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "requestId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "numWords",
+          "type": "uint32"
+        }
+      ],
+      "name": "RequestSent",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_requestId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getRequestStatus",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "fulfilled",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "randomWords",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "numWords",
+          "type": "uint32"
+        }
+      ],
+      "name": "requestRandomWords",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "requestId",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "size",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "entropy",
+          "type": "uint256"
+        }
+      ],
+      "name": "shuffle",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "ast": {
+    "absolutePath": "interfaces/IISOTOP1030.sol",
+    "exportedSymbols": {
+      "IISOTOP1030": [
+        983
+      ]
+    },
+    "id": 984,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 941,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".4"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:34"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IISOTOP1030",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 942,
+          "nodeType": "StructuredDocumentation",
+          "src": "57:231:34",
+          "text": "\u8fd9\u662f\u4e00\u4e2a\u9884\u8a00\u673a\u7684\u5305\u88c5\u5408\u7ea6\uff0c\u4f7f\u7528\u4e86chainlink\u7684VRF\n  \u4f7f\u7528\u8005\u65e0\u9700\u7533\u8bf7link\uff0c\u53ea\u9700\u8981\u4ed8\u8d39TGAS\u8d39\u7528\uff0c\u6211\u4eec\u4f1a\u652f\u4ed8chainlink\u7684\u901a\u9053\u8d39\u7528\n  \u6ce8\u610f\uff0c\u5c1a\u672a\u652f\u6301\u56fd\u5185\u8054\u76df\u94fe\u3002 \u6b63\u5728\u79fb\u690d\u4e2d"
+        },
+        "fullyImplemented": false,
+        "id": 983,
+        "linearizedBaseContracts": [
+          983
+        ],
+        "name": "IISOTOP1030",
+        "nameLocation": "299:11:34",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "eventSelector": "cc58b13ad3eab50626c6a6300b1d139cd6ebb1688a7cced9461c2f7e762665ee",
+            "id": 948,
+            "name": "RequestSent",
+            "nameLocation": "323:11:34",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 947,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 944,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "requestId",
+                  "nameLocation": "343:9:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 948,
+                  "src": "335:17:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 943,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "335:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 946,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "numWords",
+                  "nameLocation": "361:8:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 948,
+                  "src": "354:15:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 945,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "354:6:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "334:36:34"
+            },
+            "src": "317:54:34"
+          },
+          {
+            "anonymous": false,
+            "eventSelector": "fe2e2d779dba245964d4e3ef9b994be63856fd568bf7d3ca9e224755cb1bd54d",
+            "id": 955,
+            "name": "RequestFulfilled",
+            "nameLocation": "382:16:34",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 954,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 950,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "requestId",
+                  "nameLocation": "407:9:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 955,
+                  "src": "399:17:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 949,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "399:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 953,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "randomWords",
+                  "nameLocation": "428:11:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 955,
+                  "src": "418:21:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 951,
+                      "name": "uint256",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "418:7:34",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 952,
+                    "nodeType": "ArrayTypeName",
+                    "src": "418:9:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "398:42:34"
+            },
+            "src": "376:65:34"
+          },
+          {
+            "functionSelector": "e726f2e1",
+            "id": 962,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "requestRandomWords",
+            "nameLocation": "506:18:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 958,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 957,
+                  "mutability": "mutable",
+                  "name": "numWords",
+                  "nameLocation": "532:8:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 962,
+                  "src": "525:15:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 956,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "525:6:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "524:17:34"
+            },
+            "returnParameters": {
+              "id": 961,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 960,
+                  "mutability": "mutable",
+                  "name": "requestId",
+                  "nameLocation": "584:9:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 962,
+                  "src": "576:17:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 959,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "576:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "575:19:34"
+            },
+            "scope": 983,
+            "src": "497:98:34",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "d8a4676f",
+            "id": 972,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getRequestStatus",
+            "nameLocation": "678:16:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 965,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 964,
+                  "mutability": "mutable",
+                  "name": "_requestId",
+                  "nameLocation": "703:10:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 972,
+                  "src": "695:18:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 963,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "695:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "694:20:34"
+            },
+            "returnParameters": {
+              "id": 971,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 967,
+                  "mutability": "mutable",
+                  "name": "fulfilled",
+                  "nameLocation": "767:9:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 972,
+                  "src": "762:14:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 966,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "762:4:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 970,
+                  "mutability": "mutable",
+                  "name": "randomWords",
+                  "nameLocation": "795:11:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 972,
+                  "src": "778:28:34",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 968,
+                      "name": "uint256",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "778:7:34",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 969,
+                    "nodeType": "ArrayTypeName",
+                    "src": "778:9:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "761:46:34"
+            },
+            "scope": 983,
+            "src": "669:139:34",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "29fa6d02",
+            "id": 982,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "shuffle",
+            "nameLocation": "888:7:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 977,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 974,
+                  "mutability": "mutable",
+                  "name": "size",
+                  "nameLocation": "904:4:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 982,
+                  "src": "896:12:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 973,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "896:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 976,
+                  "mutability": "mutable",
+                  "name": "entropy",
+                  "nameLocation": "918:7:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 982,
+                  "src": "910:15:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 975,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "910:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "895:31:34"
+            },
+            "returnParameters": {
+              "id": 981,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 980,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 982,
+                  "src": "974:16:34",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 978,
+                      "name": "uint256",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "974:7:34",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 979,
+                    "nodeType": "ArrayTypeName",
+                    "src": "974:9:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "973:18:34"
+            },
+            "scope": 983,
+            "src": "879:113:34",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 984,
+        "src": "289:705:34",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:963:34"
+  },
+  "contractName": "IISOTOP1030",
+  "dependencies": [],
+  "offset": [
+    289,
+    994
+  ],
+  "sha1": "1ba7ba9e6516efaf1a8518bb40fa413064ab81ee",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.4;\n\n///  \u8fd9\u662f\u4e00\u4e2a\u9884\u8a00\u673a\u7684\u5305\u88c5\u5408\u7ea6\uff0c\u4f7f\u7528\u4e86chainlink\u7684VRF\n///  \u4f7f\u7528\u8005\u65e0\u9700\u7533\u8bf7link\uff0c\u53ea\u9700\u8981\u4ed8\u8d39TGAS\u8d39\u7528\uff0c\u6211\u4eec\u4f1a\u652f\u4ed8chainlink\u7684\u901a\u9053\u8d39\u7528\n///  \u6ce8\u610f\uff0c\u5c1a\u672a\u652f\u6301\u56fd\u5185\u8054\u76df\u94fe\u3002 \u6b63\u5728\u79fb\u690d\u4e2d\n\ninterface IISOTOP1030 {\n    event RequestSent(uint256 requestId, uint32 numWords);\n    event RequestFulfilled(uint256 requestId, uint256[] randomWords);\n\n    // \u53d1\u8d77N\u4e2a\u968f\u673a\u6570\u8bf7\u6c42\uff0c\u8fd4\u56de\u8bf7\u6c42ID\n    function requestRandomWords(uint32 numWords)\n        external\n        returns (uint256 requestId);\n\n    // \u67e5\u8be2\u968f\u673a\u6570\u8bf7\u6c42\u72b6\u51b5\uff0c\u5982\u679c\u5b8c\u6210\u4e86\u5c31\u8bfb\u53d6\u6570\u7ec4\n    function getRequestStatus(uint256 _requestId)\n        external\n        view\n        returns (bool fulfilled, uint256[] memory randomWords);\n\n    // \u6df7\u6dc6\u4e00\u4e2a\u6570\u7ec4\uff0c\u6839\u636e\u751f\u6210\u7684\u968f\u673a\u6570\u4f5c\u4e3a\u79cd\u5b50\n    function shuffle(uint256 size, uint256 entropy)\n        external\n        pure\n        returns (uint256[] memory);\n}\n",
+  "type": "interface"
+}

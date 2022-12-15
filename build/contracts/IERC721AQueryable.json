@@ -1,0 +1,1324 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "ApprovalCallerNotOwnerNorApproved",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ApprovalQueryForNonexistentToken",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "BalanceQueryForZeroAddress",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidQueryRange",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "MintERC2309QuantityExceedsLimit",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "MintToZeroAddress",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "MintZeroQuantity",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "OwnerQueryForNonexistentToken",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "OwnershipNotInitializedForExtraData",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "TransferCallerNotOwnerNorApproved",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "TransferFromIncorrectOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "TransferToNonERC721ReceiverImplementer",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "TransferToZeroAddress",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "URIQueryForNonexistentToken",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "approved",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "approved",
+          "type": "bool"
+        }
+      ],
+      "name": "ApprovalForAll",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "fromTokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "toTokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        }
+      ],
+      "name": "ConsecutiveTransfer",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "balance",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "explicitOwnershipOf",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "internalType": "uint64",
+              "name": "startTimestamp",
+              "type": "uint64"
+            },
+            {
+              "internalType": "bool",
+              "name": "burned",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint24",
+              "name": "extraData",
+              "type": "uint24"
+            }
+          ],
+          "internalType": "struct IERC721A.TokenOwnership",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "tokenIds",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "explicitOwnershipsOf",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "internalType": "uint64",
+              "name": "startTimestamp",
+              "type": "uint64"
+            },
+            {
+              "internalType": "bool",
+              "name": "burned",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint24",
+              "name": "extraData",
+              "type": "uint24"
+            }
+          ],
+          "internalType": "struct IERC721A.TokenOwnership[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getApproved",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        }
+      ],
+      "name": "isApprovedForAll",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "ownerOf",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "safeTransferFrom",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "safeTransferFrom",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "_approved",
+          "type": "bool"
+        }
+      ],
+      "name": "setApprovalForAll",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "interfaceId",
+          "type": "bytes4"
+        }
+      ],
+      "name": "supportsInterface",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "symbol",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenURI",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "tokensOfOwner",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "start",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "stop",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokensOfOwnerIn",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "allSourcePaths": {
+    "0": "contracts/ERC721A/IERC721A.sol",
+    "3": "contracts/ERC721A/extensions/IERC721AQueryable.sol"
+  },
+  "ast": {
+    "absolutePath": "contracts/ERC721A/extensions/IERC721AQueryable.sol",
+    "exportedSymbols": {
+      "IERC721A": [
+        205
+      ],
+      "IERC721AQueryable": [
+        315
+      ]
+    },
+    "id": 316,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 265,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".4"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "84:23:3"
+      },
+      {
+        "absolutePath": "contracts/ERC721A/IERC721A.sol",
+        "file": "../IERC721A.sol",
+        "id": 266,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 316,
+        "sourceUnit": 206,
+        "src": "109:25:3",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 268,
+              "name": "IERC721A",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 205,
+              "src": "214:8:3"
+            },
+            "id": 269,
+            "nodeType": "InheritanceSpecifier",
+            "src": "214:8:3"
+          }
+        ],
+        "canonicalName": "IERC721AQueryable",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 267,
+          "nodeType": "StructuredDocumentation",
+          "src": "136:46:3",
+          "text": " @dev Interface of ERC721AQueryable."
+        },
+        "fullyImplemented": false,
+        "id": 315,
+        "linearizedBaseContracts": [
+          315,
+          205
+        ],
+        "name": "IERC721AQueryable",
+        "nameLocation": "193:17:3",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 270,
+              "nodeType": "StructuredDocumentation",
+              "src": "229:59:3",
+              "text": " Invalid query range (`start` >= `stop`)."
+            },
+            "errorSelector": "32c1995a",
+            "id": 272,
+            "name": "InvalidQueryRange",
+            "nameLocation": "299:17:3",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 271,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "316:2:3"
+            },
+            "src": "293:26:3"
+          },
+          {
+            "documentation": {
+              "id": 273,
+              "nodeType": "StructuredDocumentation",
+              "src": "325:727:3",
+              "text": " @dev Returns the `TokenOwnership` struct at `tokenId` without reverting.\n If the `tokenId` is out of bounds:\n - `addr = address(0)`\n - `startTimestamp = 0`\n - `burned = false`\n - `extraData = 0`\n If the `tokenId` is burned:\n - `addr = <Address of owner before token was burned>`\n - `startTimestamp = <Timestamp when token was burned>`\n - `burned = true`\n - `extraData = <Extra data when token was burned>`\n Otherwise:\n - `addr = <Address of owner>`\n - `startTimestamp = <Timestamp of start of ownership>`\n - `burned = false`\n - `extraData = <Extra data at start of ownership>`"
+            },
+            "functionSelector": "c23dc68f",
+            "id": 281,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "explicitOwnershipOf",
+            "nameLocation": "1066:19:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 276,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 275,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1094:7:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 281,
+                  "src": "1086:15:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 274,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1086:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1085:17:3"
+            },
+            "returnParameters": {
+              "id": 280,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 279,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 281,
+                  "src": "1126:21:3",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_TokenOwnership_$50_memory_ptr",
+                    "typeString": "struct IERC721A.TokenOwnership"
+                  },
+                  "typeName": {
+                    "id": 278,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 277,
+                      "name": "TokenOwnership",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 50,
+                      "src": "1126:14:3"
+                    },
+                    "referencedDeclaration": 50,
+                    "src": "1126:14:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_TokenOwnership_$50_storage_ptr",
+                      "typeString": "struct IERC721A.TokenOwnership"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1125:23:3"
+            },
+            "scope": 315,
+            "src": "1057:92:3",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 282,
+              "nodeType": "StructuredDocumentation",
+              "src": "1155:142:3",
+              "text": " @dev Returns an array of `TokenOwnership` structs at `tokenIds` in order.\n See {ERC721AQueryable-explicitOwnershipOf}"
+            },
+            "functionSelector": "5bbb2177",
+            "id": 292,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "explicitOwnershipsOf",
+            "nameLocation": "1311:20:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 286,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 285,
+                  "mutability": "mutable",
+                  "name": "tokenIds",
+                  "nameLocation": "1349:8:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 292,
+                  "src": "1332:25:3",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 283,
+                      "name": "uint256",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1332:7:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 284,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1332:9:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1331:27:3"
+            },
+            "returnParameters": {
+              "id": 291,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 290,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 292,
+                  "src": "1382:23:3",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_TokenOwnership_$50_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct IERC721A.TokenOwnership[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 288,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 287,
+                        "name": "TokenOwnership",
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 50,
+                        "src": "1382:14:3"
+                      },
+                      "referencedDeclaration": 50,
+                      "src": "1382:14:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_TokenOwnership_$50_storage_ptr",
+                        "typeString": "struct IERC721A.TokenOwnership"
+                      }
+                    },
+                    "id": 289,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1382:16:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_TokenOwnership_$50_storage_$dyn_storage_ptr",
+                      "typeString": "struct IERC721A.TokenOwnership[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1381:25:3"
+            },
+            "scope": 315,
+            "src": "1302:105:3",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 293,
+              "nodeType": "StructuredDocumentation",
+              "src": "1413:363:3",
+              "text": " @dev Returns an array of token IDs owned by `owner`,\n in the range [`start`, `stop`)\n (i.e. `start <= tokenId < stop`).\n This function allows for tokens to be queried if the collection\n grows too big for a single call of {ERC721AQueryable-tokensOfOwner}.\n Requirements:\n - `start < stop`"
+            },
+            "functionSelector": "99a2557a",
+            "id": 305,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "tokensOfOwnerIn",
+            "nameLocation": "1790:15:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 300,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 295,
+                  "mutability": "mutable",
+                  "name": "owner",
+                  "nameLocation": "1823:5:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 305,
+                  "src": "1815:13:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 294,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1815:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 297,
+                  "mutability": "mutable",
+                  "name": "start",
+                  "nameLocation": "1846:5:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 305,
+                  "src": "1838:13:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 296,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1838:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 299,
+                  "mutability": "mutable",
+                  "name": "stop",
+                  "nameLocation": "1869:4:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 305,
+                  "src": "1861:12:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 298,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1861:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1805:74:3"
+            },
+            "returnParameters": {
+              "id": 304,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 303,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 305,
+                  "src": "1903:16:3",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 301,
+                      "name": "uint256",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1903:7:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 302,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1903:9:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1902:18:3"
+            },
+            "scope": 315,
+            "src": "1781:140:3",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 306,
+              "nodeType": "StructuredDocumentation",
+              "src": "1927:424:3",
+              "text": " @dev Returns an array of token IDs owned by `owner`.\n This function scans the ownership mapping and is O(`totalSupply`) in complexity.\n It is meant to be called off-chain.\n See {ERC721AQueryable-tokensOfOwnerIn} for splitting the scan into\n multiple smaller scans if the collection is large enough to cause\n an out-of-gas error (10K collections should be fine)."
+            },
+            "functionSelector": "8462151c",
+            "id": 314,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "tokensOfOwner",
+            "nameLocation": "2365:13:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 309,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 308,
+                  "mutability": "mutable",
+                  "name": "owner",
+                  "nameLocation": "2387:5:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 314,
+                  "src": "2379:13:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 307,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2379:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2378:15:3"
+            },
+            "returnParameters": {
+              "id": 313,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 312,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 314,
+                  "src": "2417:16:3",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 310,
+                      "name": "uint256",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "2417:7:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 311,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2417:9:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2416:18:3"
+            },
+            "scope": 315,
+            "src": "2356:79:3",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 316,
+        "src": "183:2254:3",
+        "usedErrors": [
+          5,
+          8,
+          11,
+          14,
+          17,
+          20,
+          23,
+          26,
+          29,
+          32,
+          35,
+          38,
+          41,
+          272
+        ]
+      }
+    ],
+    "src": "84:2354:3"
+  },
+  "bytecode": "",
+  "bytecodeSha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+  "compiler": {
+    "evm_version": "istanbul",
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "version": "0.8.13+commit.abaa5c0e"
+  },
+  "contractName": "IERC721AQueryable",
+  "coverageMap": {
+    "branches": {},
+    "statements": {}
+  },
+  "dependencies": [
+    "IERC721A"
+  ],
+  "deployedBytecode": "",
+  "deployedSourceMap": "",
+  "language": "Solidity",
+  "natspec": {
+    "details": "Interface of ERC721AQueryable.",
+    "errors": {
+      "ApprovalCallerNotOwnerNorApproved()": [
+        {
+          "notice": "The caller must own the token or be an approved operator."
+        }
+      ],
+      "ApprovalQueryForNonexistentToken()": [
+        {
+          "notice": "The token does not exist."
+        }
+      ],
+      "BalanceQueryForZeroAddress()": [
+        {
+          "notice": "Cannot query the balance for the zero address."
+        }
+      ],
+      "InvalidQueryRange()": [
+        {
+          "notice": "Invalid query range (`start` >= `stop`)."
+        }
+      ],
+      "MintERC2309QuantityExceedsLimit()": [
+        {
+          "notice": "The `quantity` minted with ERC2309 exceeds the safety limit."
+        }
+      ],
+      "MintToZeroAddress()": [
+        {
+          "notice": "Cannot mint to the zero address."
+        }
+      ],
+      "MintZeroQuantity()": [
+        {
+          "notice": "The quantity of tokens minted must be more than zero."
+        }
+      ],
+      "OwnerQueryForNonexistentToken()": [
+        {
+          "notice": "The token does not exist."
+        }
+      ],
+      "OwnershipNotInitializedForExtraData()": [
+        {
+          "notice": "The `extraData` cannot be set on an unintialized ownership slot."
+        }
+      ],
+      "TransferCallerNotOwnerNorApproved()": [
+        {
+          "notice": "The caller must own the token or be an approved operator."
+        }
+      ],
+      "TransferFromIncorrectOwner()": [
+        {
+          "notice": "The token must be owned by `from`."
+        }
+      ],
+      "TransferToNonERC721ReceiverImplementer()": [
+        {
+          "notice": "Cannot safely transfer to a contract that does not implement the ERC721Receiver interface."
+        }
+      ],
+      "TransferToZeroAddress()": [
+        {
+          "notice": "Cannot transfer to the zero address."
+        }
+      ],
+      "URIQueryForNonexistentToken()": [
+        {
+          "notice": "The token does not exist."
+        }
+      ]
+    },
+    "kind": "dev",
+    "methods": {
+      "approve(address,uint256)": {
+        "details": "Gives permission to `to` to transfer `tokenId` token to another account. The approval is cleared when the token is transferred. Only a single account can be approved at a time, so approving the zero address clears previous approvals. Requirements: - The caller must own the token or be an approved operator. - `tokenId` must exist. Emits an {Approval} event."
+      },
+      "balanceOf(address)": {
+        "details": "Returns the number of tokens in `owner`'s account."
+      },
+      "explicitOwnershipOf(uint256)": {
+        "details": "Returns the `TokenOwnership` struct at `tokenId` without reverting. If the `tokenId` is out of bounds: - `addr = address(0)` - `startTimestamp = 0` - `burned = false` - `extraData = 0` If the `tokenId` is burned: - `addr = <Address of owner before token was burned>` - `startTimestamp = <Timestamp when token was burned>` - `burned = true` - `extraData = <Extra data when token was burned>` Otherwise: - `addr = <Address of owner>` - `startTimestamp = <Timestamp of start of ownership>` - `burned = false` - `extraData = <Extra data at start of ownership>`"
+      },
+      "explicitOwnershipsOf(uint256[])": {
+        "details": "Returns an array of `TokenOwnership` structs at `tokenIds` in order. See {ERC721AQueryable-explicitOwnershipOf}"
+      },
+      "getApproved(uint256)": {
+        "details": "Returns the account approved for `tokenId` token. Requirements: - `tokenId` must exist."
+      },
+      "isApprovedForAll(address,address)": {
+        "details": "Returns if the `operator` is allowed to manage all of the assets of `owner`. See {setApprovalForAll}."
+      },
+      "name()": {
+        "details": "Returns the token collection name."
+      },
+      "ownerOf(uint256)": {
+        "details": "Returns the owner of the `tokenId` token. Requirements: - `tokenId` must exist."
+      },
+      "safeTransferFrom(address,address,uint256)": {
+        "details": "Equivalent to `safeTransferFrom(from, to, tokenId, '')`."
+      },
+      "safeTransferFrom(address,address,uint256,bytes)": {
+        "details": "Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients are aware of the ERC721 protocol to prevent tokens from being forever locked. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must be have been allowed to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer. Emits a {Transfer} event."
+      },
+      "setApprovalForAll(address,bool)": {
+        "details": "Approve or remove `operator` as an operator for the caller. Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller. Requirements: - The `operator` cannot be the caller. Emits an {ApprovalForAll} event."
+      },
+      "supportsInterface(bytes4)": {
+        "details": "Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding [EIP section](https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified) to learn more about how these ids are created. This function call must use less than 30000 gas."
+      },
+      "symbol()": {
+        "details": "Returns the token collection symbol."
+      },
+      "tokenURI(uint256)": {
+        "details": "Returns the Uniform Resource Identifier (URI) for `tokenId` token."
+      },
+      "tokensOfOwner(address)": {
+        "details": "Returns an array of token IDs owned by `owner`. This function scans the ownership mapping and is O(`totalSupply`) in complexity. It is meant to be called off-chain. See {ERC721AQueryable-tokensOfOwnerIn} for splitting the scan into multiple smaller scans if the collection is large enough to cause an out-of-gas error (10K collections should be fine)."
+      },
+      "tokensOfOwnerIn(address,uint256,uint256)": {
+        "details": "Returns an array of token IDs owned by `owner`, in the range [`start`, `stop`) (i.e. `start <= tokenId < stop`). This function allows for tokens to be queried if the collection grows too big for a single call of {ERC721AQueryable-tokensOfOwner}. Requirements: - `start < stop`"
+      },
+      "totalSupply()": {
+        "details": "Returns the total number of tokens in existence. Burned tokens will reduce the count. To get the total number of tokens minted, please see {_totalMinted}."
+      },
+      "transferFrom(address,address,uint256)": {
+        "details": "Transfers `tokenId` from `from` to `to`. WARNING: Usage of this method is discouraged, use {safeTransferFrom} whenever possible. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. Emits a {Transfer} event."
+      }
+    },
+    "version": 1
+  },
+  "offset": [
+    183,
+    2437
+  ],
+  "opcodes": "",
+  "pcMap": {},
+  "sha1": "5b830b5a565fa83e2bd87d734eb542d749e79352",
+  "source": "// SPDX-License-Identifier: MIT\n// ERC721A Contracts v4.2.3\n// Creator: Chiru Labs\n\npragma solidity ^0.8.4;\n\nimport '../IERC721A.sol';\n\n/**\n * @dev Interface of ERC721AQueryable.\n */\ninterface IERC721AQueryable is IERC721A {\n    /**\n     * Invalid query range (`start` >= `stop`).\n     */\n    error InvalidQueryRange();\n\n    /**\n     * @dev Returns the `TokenOwnership` struct at `tokenId` without reverting.\n     *\n     * If the `tokenId` is out of bounds:\n     *\n     * - `addr = address(0)`\n     * - `startTimestamp = 0`\n     * - `burned = false`\n     * - `extraData = 0`\n     *\n     * If the `tokenId` is burned:\n     *\n     * - `addr = <Address of owner before token was burned>`\n     * - `startTimestamp = <Timestamp when token was burned>`\n     * - `burned = true`\n     * - `extraData = <Extra data when token was burned>`\n     *\n     * Otherwise:\n     *\n     * - `addr = <Address of owner>`\n     * - `startTimestamp = <Timestamp of start of ownership>`\n     * - `burned = false`\n     * - `extraData = <Extra data at start of ownership>`\n     */\n    function explicitOwnershipOf(uint256 tokenId) external view returns (TokenOwnership memory);\n\n    /**\n     * @dev Returns an array of `TokenOwnership` structs at `tokenIds` in order.\n     * See {ERC721AQueryable-explicitOwnershipOf}\n     */\n    function explicitOwnershipsOf(uint256[] memory tokenIds) external view returns (TokenOwnership[] memory);\n\n    /**\n     * @dev Returns an array of token IDs owned by `owner`,\n     * in the range [`start`, `stop`)\n     * (i.e. `start <= tokenId < stop`).\n     *\n     * This function allows for tokens to be queried if the collection\n     * grows too big for a single call of {ERC721AQueryable-tokensOfOwner}.\n     *\n     * Requirements:\n     *\n     * - `start < stop`\n     */\n    function tokensOfOwnerIn(\n        address owner,\n        uint256 start,\n        uint256 stop\n    ) external view returns (uint256[] memory);\n\n    /**\n     * @dev Returns an array of token IDs owned by `owner`.\n     *\n     * This function scans the ownership mapping and is O(`totalSupply`) in complexity.\n     * It is meant to be called off-chain.\n     *\n     * See {ERC721AQueryable-tokensOfOwnerIn} for splitting the scan into\n     * multiple smaller scans if the collection is large enough to cause\n     * an out-of-gas error (10K collections should be fine).\n     */\n    function tokensOfOwner(address owner) external view returns (uint256[] memory);\n}\n",
+  "sourceMap": "",
+  "sourcePath": "contracts/ERC721A/extensions/IERC721AQueryable.sol",
+  "type": "interface"
+}

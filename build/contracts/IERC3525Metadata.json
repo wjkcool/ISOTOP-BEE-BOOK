@@ -1,0 +1,983 @@
+{
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "approved",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "approved",
+          "type": "bool"
+        }
+      ],
+      "name": "ApprovalForAll",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_operator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "ApprovalValue",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_oldSlot",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_newSlot",
+          "type": "uint256"
+        }
+      ],
+      "name": "SlotChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_fromTokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_toTokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "TransferValue",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_operator",
+          "type": "address"
+        }
+      ],
+      "name": "allowance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_operator",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "balance",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "contractURI",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getApproved",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        }
+      ],
+      "name": "isApprovedForAll",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "ownerOf",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "safeTransferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "safeTransferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "_approved",
+          "type": "bool"
+        }
+      ],
+      "name": "setApprovalForAll",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "slotOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_slot",
+          "type": "uint256"
+        }
+      ],
+      "name": "slotURI",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "interfaceId",
+          "type": "bytes4"
+        }
+      ],
+      "name": "supportsInterface",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "symbol",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenURI",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_fromTokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_toTokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "valueDecimals",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "allSourcePaths": {
+    "3": "/Users/iwan/.brownie/packages/OpenZeppelin/openzeppelin-contracts@4.7.3/contracts/token/ERC721/IERC721.sol",
+    "4": "/Users/iwan/.brownie/packages/OpenZeppelin/openzeppelin-contracts@4.7.3/contracts/token/ERC721/extensions/IERC721Metadata.sol",
+    "5": "/Users/iwan/.brownie/packages/OpenZeppelin/openzeppelin-contracts@4.7.3/contracts/utils/introspection/IERC165.sol",
+    "6": "contracts/ERC3525/interfaces/IERC3525.sol",
+    "7": "contracts/ERC3525/interfaces/IERC3525Metadata.sol"
+  },
+  "ast": {
+    "absolutePath": "contracts/ERC3525/interfaces/IERC3525Metadata.sol",
+    "exportedSymbols": {
+      "IERC165": [
+        133
+      ],
+      "IERC3525": [
+        88
+      ],
+      "IERC3525Metadata": [
+        112
+      ],
+      "IERC721": [
+        249
+      ],
+      "IERC721Metadata": [
+        276
+      ]
+    },
+    "id": 113,
+    "license": "CC0-1.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 90,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "36:23:7"
+      },
+      {
+        "absolutePath": "contracts/ERC3525/interfaces/IERC3525.sol",
+        "file": "./IERC3525.sol",
+        "id": 91,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 113,
+        "sourceUnit": 89,
+        "src": "61:24:7",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/iwan/.brownie/packages/OpenZeppelin/openzeppelin-contracts@4.7.3/contracts/interfaces/IERC721Metadata.sol",
+        "file": "@openzeppelin/contracts/interfaces/IERC721Metadata.sol",
+        "id": 92,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 113,
+        "sourceUnit": 122,
+        "src": "86:64:7",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 94,
+              "name": "IERC3525",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 88,
+              "src": "895:8:7"
+            },
+            "id": 95,
+            "nodeType": "InheritanceSpecifier",
+            "src": "895:8:7"
+          },
+          {
+            "baseName": {
+              "id": 96,
+              "name": "IERC721Metadata",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 276,
+              "src": "905:15:7"
+            },
+            "id": 97,
+            "nodeType": "InheritanceSpecifier",
+            "src": "905:15:7"
+          }
+        ],
+        "canonicalName": "IERC3525Metadata",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 93,
+          "nodeType": "StructuredDocumentation",
+          "src": "152:712:7",
+          "text": " @title ERC-3525 Semi-Fungible Token Standard, optional extension for metadata\n @dev Interfaces for any contract that wants to support query of the Uniform Resource Identifier\n  (URI) for the ERC3525 contract as well as a specified slot.\n  Because of the higher reliability of data stored in smart contracts compared to data stored in\n  centralized systems, it is recommended that metadata, including `contractURI`, `slotURI` and\n  `tokenURI`, be directly returned in JSON format, instead of being returned with a url pointing\n  to any resource stored in a centralized system.\n  See https://eips.ethereum.org/EIPS/eip-3525\n Note: the ERC-165 identifier for this interface is 0xe1600902."
+        },
+        "fullyImplemented": false,
+        "id": 112,
+        "linearizedBaseContracts": [
+          112,
+          276,
+          88,
+          249,
+          133
+        ],
+        "name": "IERC3525Metadata",
+        "nameLocation": "875:16:7",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 98,
+              "nodeType": "StructuredDocumentation",
+              "src": "927:403:7",
+              "text": " @notice Returns the Uniform Resource Identifier (URI) for the current ERC3525 contract.\n @dev This function SHOULD return the URI for this contract in JSON format, starting with\n  header `data:application/json;`.\n  See https://eips.ethereum.org/EIPS/eip-3525 for the JSON schema for contract URI.\n @return The JSON formatted URI of the current ERC3525 contract"
+            },
+            "functionSelector": "e8a3d485",
+            "id": 103,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "contractURI",
+            "nameLocation": "1344:11:7",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 99,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1355:2:7"
+            },
+            "returnParameters": {
+              "id": 102,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 101,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 103,
+                  "src": "1381:13:7",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 100,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1381:6:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1380:15:7"
+            },
+            "scope": 112,
+            "src": "1335:61:7",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 104,
+              "nodeType": "StructuredDocumentation",
+              "src": "1402:362:7",
+              "text": " @notice Returns the Uniform Resource Identifier (URI) for the specified slot.\n @dev This function SHOULD return the URI for `_slot` in JSON format, starting with header\n  `data:application/json;`.\n  See https://eips.ethereum.org/EIPS/eip-3525 for the JSON schema for slot URI.\n @return The JSON formatted URI of `_slot`"
+            },
+            "functionSelector": "09c3dd87",
+            "id": 111,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "slotURI",
+            "nameLocation": "1778:7:7",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 107,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 106,
+                  "mutability": "mutable",
+                  "name": "_slot",
+                  "nameLocation": "1794:5:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 111,
+                  "src": "1786:13:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 105,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1786:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1785:15:7"
+            },
+            "returnParameters": {
+              "id": 110,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 109,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 111,
+                  "src": "1824:13:7",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 108,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1824:6:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1823:15:7"
+            },
+            "scope": 112,
+            "src": "1769:70:7",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 113,
+        "src": "865:976:7",
+        "usedErrors": []
+      }
+    ],
+    "src": "36:1806:7"
+  },
+  "bytecode": "",
+  "bytecodeSha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+  "compiler": {
+    "evm_version": "istanbul",
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "version": "0.8.13+commit.abaa5c0e"
+  },
+  "contractName": "IERC3525Metadata",
+  "coverageMap": {
+    "branches": {},
+    "statements": {}
+  },
+  "dependencies": [
+    "OpenZeppelin/openzeppelin-contracts@4.7.3/IERC165",
+    "IERC3525",
+    "OpenZeppelin/openzeppelin-contracts@4.7.3/IERC721",
+    "OpenZeppelin/openzeppelin-contracts@4.7.3/IERC721Metadata"
+  ],
+  "deployedBytecode": "",
+  "deployedSourceMap": "",
+  "language": "Solidity",
+  "natspec": {
+    "details": "Interfaces for any contract that wants to support query of the Uniform Resource Identifier  (URI) for the ERC3525 contract as well as a specified slot.  Because of the higher reliability of data stored in smart contracts compared to data stored in  centralized systems, it is recommended that metadata, including `contractURI`, `slotURI` and  `tokenURI`, be directly returned in JSON format, instead of being returned with a url pointing  to any resource stored in a centralized system.  See https://eips.ethereum.org/EIPS/eip-3525 Note: the ERC-165 identifier for this interface is 0xe1600902.",
+    "kind": "dev",
+    "methods": {
+      "allowance(uint256,address)": {
+        "notice": "Get the maximum value of a token that an operator is allowed to manage.",
+        "params": {
+          "_operator": "The address of an operator",
+          "_tokenId": "The token for which to query the allowance"
+        },
+        "returns": {
+          "_0": "The current approval value of `_tokenId` that `_operator` is allowed to manage"
+        }
+      },
+      "approve(address,uint256)": {
+        "details": "Gives permission to `to` to transfer `tokenId` token to another account. The approval is cleared when the token is transferred. Only a single account can be approved at a time, so approving the zero address clears previous approvals. Requirements: - The caller must own the token or be an approved operator. - `tokenId` must exist. Emits an {Approval} event."
+      },
+      "approve(uint256,address,uint256)": {
+        "details": "MUST revert unless caller is the current owner, an authorized operator, or the approved  address for `_tokenId`.  MUST emit ApprovalValue event.",
+        "notice": "Allow an operator to manage the value of a token, up to the `_value` amount.",
+        "params": {
+          "_operator": "The operator to be approved",
+          "_tokenId": "The token to approve",
+          "_value": "The maximum value of `_toTokenId` that `_operator` is allowed to manage"
+        }
+      },
+      "balanceOf(address)": {
+        "details": "Returns the number of tokens in ``owner``'s account."
+      },
+      "balanceOf(uint256)": {
+        "notice": "Get the value of a token.",
+        "params": {
+          "_tokenId": "The token for which to query the balance"
+        },
+        "returns": {
+          "_0": "The value of `_tokenId`"
+        }
+      },
+      "contractURI()": {
+        "details": "This function SHOULD return the URI for this contract in JSON format, starting with  header `data:application/json;`.  See https://eips.ethereum.org/EIPS/eip-3525 for the JSON schema for contract URI.",
+        "notice": "Returns the Uniform Resource Identifier (URI) for the current ERC3525 contract.",
+        "returns": {
+          "_0": "The JSON formatted URI of the current ERC3525 contract"
+        }
+      },
+      "getApproved(uint256)": {
+        "details": "Returns the account approved for `tokenId` token. Requirements: - `tokenId` must exist."
+      },
+      "isApprovedForAll(address,address)": {
+        "details": "Returns if the `operator` is allowed to manage all of the assets of `owner`. See {setApprovalForAll}"
+      },
+      "name()": {
+        "details": "Returns the token collection name."
+      },
+      "ownerOf(uint256)": {
+        "details": "Returns the owner of the `tokenId` token. Requirements: - `tokenId` must exist."
+      },
+      "safeTransferFrom(address,address,uint256)": {
+        "details": "Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients are aware of the ERC721 protocol to prevent tokens from being forever locked. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must have been allowed to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer. Emits a {Transfer} event."
+      },
+      "safeTransferFrom(address,address,uint256,bytes)": {
+        "details": "Safely transfers `tokenId` token from `from` to `to`. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer. Emits a {Transfer} event."
+      },
+      "setApprovalForAll(address,bool)": {
+        "details": "Approve or remove `operator` as an operator for the caller. Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller. Requirements: - The `operator` cannot be the caller. Emits an {ApprovalForAll} event."
+      },
+      "slotOf(uint256)": {
+        "notice": "Get the slot of a token.",
+        "params": {
+          "_tokenId": "The identifier for a token"
+        },
+        "returns": {
+          "_0": "The slot of the token"
+        }
+      },
+      "slotURI(uint256)": {
+        "details": "This function SHOULD return the URI for `_slot` in JSON format, starting with header  `data:application/json;`.  See https://eips.ethereum.org/EIPS/eip-3525 for the JSON schema for slot URI.",
+        "notice": "Returns the Uniform Resource Identifier (URI) for the specified slot.",
+        "returns": {
+          "_0": "The JSON formatted URI of `_slot`"
+        }
+      },
+      "supportsInterface(bytes4)": {
+        "details": "Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section] to learn more about how these ids are created. This function call must use less than 30 000 gas."
+      },
+      "symbol()": {
+        "details": "Returns the token collection symbol."
+      },
+      "tokenURI(uint256)": {
+        "details": "Returns the Uniform Resource Identifier (URI) for `tokenId` token."
+      },
+      "transferFrom(address,address,uint256)": {
+        "details": "Transfers `tokenId` token from `from` to `to`. WARNING: Usage of this method is discouraged, use {safeTransferFrom} whenever possible. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. Emits a {Transfer} event."
+      },
+      "transferFrom(uint256,uint256,uint256)": {
+        "details": "Caller MUST be the current owner, an authorized operator or an operator who has been  approved the whole `_fromTokenId` or part of it.  MUST revert if `_fromTokenId` or `_toTokenId` is zero token id or does not exist.  MUST revert if slots of `_fromTokenId` and `_toTokenId` do not match.  MUST revert if `_value` exceeds the balance of `_fromTokenId` or its allowance to the  operator.  MUST emit `TransferValue` event.",
+        "notice": "Transfer value from a specified token to another specified token with the same slot.",
+        "params": {
+          "_fromTokenId": "The token to transfer value from",
+          "_toTokenId": "The token to transfer value to",
+          "_value": "The transferred value"
+        }
+      },
+      "valueDecimals()": {
+        "notice": "Get the number of decimals the token uses for value - e.g. 6, means the user  representation of the value of a token can be calculated by dividing it by 1,000,000.  Considering the compatibility with third-party wallets, this function is defined as  `valueDecimals()` instead of `decimals()` to avoid conflict with ERC20 tokens.",
+        "returns": {
+          "_0": "The number of decimals for value"
+        }
+      }
+    },
+    "title": "ERC-3525 Semi-Fungible Token Standard, optional extension for metadata",
+    "version": 1
+  },
+  "offset": [
+    865,
+    1841
+  ],
+  "opcodes": "",
+  "pcMap": {},
+  "sha1": "eb882d61596b13e0c2a55237d90aa2b1b836e7be",
+  "source": "// SPDX-License-Identifier: CC0-1.0\npragma solidity ^0.8.0;\n\nimport \"./IERC3525.sol\";\nimport \"@openzeppelin/contracts/interfaces/IERC721Metadata.sol\";\n\n/**\n * @title ERC-3525 Semi-Fungible Token Standard, optional extension for metadata\n * @dev Interfaces for any contract that wants to support query of the Uniform Resource Identifier\n *  (URI) for the ERC3525 contract as well as a specified slot.\n *  Because of the higher reliability of data stored in smart contracts compared to data stored in\n *  centralized systems, it is recommended that metadata, including `contractURI`, `slotURI` and\n *  `tokenURI`, be directly returned in JSON format, instead of being returned with a url pointing\n *  to any resource stored in a centralized system.\n *  See https://eips.ethereum.org/EIPS/eip-3525\n * Note: the ERC-165 identifier for this interface is 0xe1600902.\n */\ninterface IERC3525Metadata is IERC3525, IERC721Metadata {\n    /**\n     * @notice Returns the Uniform Resource Identifier (URI) for the current ERC3525 contract.\n     * @dev This function SHOULD return the URI for this contract in JSON format, starting with\n     *  header `data:application/json;`.\n     *  See https://eips.ethereum.org/EIPS/eip-3525 for the JSON schema for contract URI.\n     * @return The JSON formatted URI of the current ERC3525 contract\n     */\n    function contractURI() external view returns (string memory);\n\n    /**\n     * @notice Returns the Uniform Resource Identifier (URI) for the specified slot.\n     * @dev This function SHOULD return the URI for `_slot` in JSON format, starting with header\n     *  `data:application/json;`.\n     *  See https://eips.ethereum.org/EIPS/eip-3525 for the JSON schema for slot URI.\n     * @return The JSON formatted URI of `_slot`\n     */\n    function slotURI(uint256 _slot) external view returns (string memory);\n}\n",
+  "sourceMap": "",
+  "sourcePath": "contracts/ERC3525/interfaces/IERC3525Metadata.sol",
+  "type": "interface"
+}
