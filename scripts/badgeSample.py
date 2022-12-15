@@ -7,6 +7,9 @@ web3 = ConfluxWeb3('test')
 # 查看一下工厂合约里面注册了哪些合约模板
 web3.showFactory()
 
+# 设置默认的账户
+web3.setDefaultAccount(web3.consumer)
+
 # 通过工厂合约创建一个ISOTOP1013合约
 i3 = web3.loadContract('ISOTOP1013', web3.deployFromFactory('ISOTOP1013'))
 print(f'ISOTOP1013 contract created at {i3.address}')
