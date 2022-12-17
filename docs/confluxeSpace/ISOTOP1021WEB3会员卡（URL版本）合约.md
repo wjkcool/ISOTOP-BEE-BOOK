@@ -19,7 +19,7 @@ RPC URL:    https://evm.confluxrpc.com
 ![如图所示](https://upload.cc/i1/2022/11/28/xfQPLy.png)
 
 
-另外写Dapp的前端，使用IISOTOP1013合约时，需要用到`ethers.js`。
+另外写Dapp的前端，使用IISOTOP1021合约时，需要用到`ethers.js`。
 
 
 ##  1. ethers.js简述
