@@ -4,6 +4,7 @@
 
 ![anyweb](https://upload.cc/i1/2022/12/11/TQdy4U.png)
 
+
 另外写Dapp的前端，使用ISOTOP1021合约时，需要用到` js-conflux-sdk`，`Buffer`和anyweb的`Provider`。
 
 
@@ -566,7 +567,7 @@ let contractName = await IISOTOP.contractName( )；
   ```
   
 ## 42. 消费会员卡积分
-为会员卡充值积分使用`IISOTOP.consume(uint256 tokenId, uint256 _value)`方法
+消费会员卡积分使用`IISOTOP.consume(uint256 tokenId, uint256 _value)`方法
  ```js
       data = IISOTOP.consume(5，100).data;  //tokenID为5的会员卡消费100积分
       recepient = provider.request({
