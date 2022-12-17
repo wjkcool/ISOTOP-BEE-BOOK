@@ -17,7 +17,7 @@ RPC URL:    http://testnet.bianjie.ai:8545
 ![如图所示](https://upload.cc/i1/2022/11/23/2ThL60.png)
 
 
-另外写Dapp的前端，使用IISOTOP1010合约时，需要用到`ethers.js`。
+另外写Dapp的前端，使用IISOTOP1022合约时，需要用到`ethers.js`。
 
 
 ##  1. ethers.js简述
@@ -505,7 +505,7 @@ let contractName = await IISOTOP.contractName( )；
   ```
   
 ## 42. 消费会员卡积分
-为会员卡充值积分使用`IISOTOP.consume(uint256 tokenId, uint256 _value)`方法
+消费会员卡积分使用`IISOTOP.consume(uint256 tokenId, uint256 _value)`方法
  ```js
  
      await IISOTOP.consume(5，100)；  //tokenID为5的会员卡消费100积分

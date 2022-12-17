@@ -506,7 +506,7 @@ let contractName = await IISOTOP.contractName( )；
   ```
   
 ## 42. 消费会员卡积分
-为会员卡充值积分使用`IISOTOP.consume(uint256 tokenId, uint256 _value)`方法
+消费会员卡积分使用`IISOTOP.consume(uint256 tokenId, uint256 _value)`方法
  ```js
  
      await IISOTOP.consume(5，100)；  //tokenID为5的会员卡消费100积分
