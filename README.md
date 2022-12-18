@@ -8,11 +8,12 @@
 4. ISOTOP1013: 可租借可销毁  
 5. ISOTOP1014: 跨链资产转移合约  
 6. ISOTOP1015: 单一图像徽章NFT合约，兼容ISOTOP1010  
-7. ISOTOP1020：ERC3525半同质化通证合约  
-8. ISOTOP1021：WEB3会员卡（URL版本）  
-9. ISOTOP1022：WEB3会员卡（SVG 动态NFT版本）  
-10. ISOTOP1030: 预言机调用合约，使用chainlink 预言机，无需LINK，直接使用TGAS费用
-11. ISOTOP1040: SoulBondToken 灵魂绑定合约  
+7. ISOTOP1016: 动态NFT
+8. ISOTOP1020：ERC3525半同质化通证合约  
+9. ISOTOP1021：WEB3会员卡（URL版本）  
+10. ISOTOP1022：WEB3会员卡（SVG 动态NFT版本）  
+11. ISOTOP1030: 预言机调用合约，使用chainlink 预言机，无需LINK，直接使用TGAS费用
+12. ISOTOP1040: SoulBondToken 灵魂绑定合约  
 
 工具合约：  
 1. Deployer : 合约部署器  
@@ -28,7 +29,7 @@
 1. Deployer : 0x18C353Ca538702f862526Cd2DEeabA35f0ED3BEE  
 2. DDS : 0xCFfFDE169Afbd51F081d2e82aCcA0f19cAdCbbeE  
 3. Factory:  "BEE_FACTORY_ADDRESS"   
-4. TGas: "BEE_TGAS_ADDRESS"    
+4. TGas: "BEE_TGAS_ADDRESS"   
 其中，Factory已经注册ISOTOP1010-1016,1021,1022 合约  
 
 数图链core地址：
