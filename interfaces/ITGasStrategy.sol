@@ -10,6 +10,8 @@ string constant SETUSER = "setUser";
 string constant VRF = "VRF";
 string constant CONSUME = "consume";
 string constant FILL = "fill";
+string constant ASSIGN = "assign";
+string constant EDIT = "edit";
 
 address constant ZERO = 0x0000000000000000000000000000000000000000;
 // angency address = admin

@@ -3,7 +3,7 @@
 // Creator: Dr. Zu team
 pragma solidity ^0.8.4;
 
-address constant BEE_DDS_ADDRESS = 0x222d6d17f1f6967b81E40624fe6176b7be225BEE;
+address constant BEE_DDS_ADDRESS = 0xCFfFDE169Afbd51F081d2e82aCcA0f19cAdCbbeE;
 
 // Conflux core DDS
 // address constant BEE_DDS_ADDRESS = 0x8C112fc9e087D2028CFbb7f73F215B9Fc812e66a;
@@ -64,10 +64,10 @@ interface IDDS {
         returns (string[] memory);
 
     function setValue(
-        bytes memory input,
-        bytes memory mark,
-        bytes memory value
-    ) external pure returns (bytes memory output);
+        string memory t,
+        string memory p,
+        string memory l
+    ) external pure returns (string memory);
 
     function toAddress(bytes memory b) external pure returns (address addr);
 
