@@ -13,8 +13,8 @@ abi = "abi/"
 
 dds = {}  # dds address on test net and main net
 
-dds['test'] = 'cfxtest:acfkpsbbgwsuvw0mfw1d2uapus6pp1zkf6x7rfpjkg'
-dds['main'] = 'cfx:acgbcn8k6cd7eayp9s59st3bnst6ue1grjjcmp5tzp'
+dds['test'] = 'cfxtest:adh991u0xn77mh2jdy1jfngmb6p6z1f572vrjhgev4'
+dds['main'] = 'cfx:adh991u0xn77mh2jdy1jfngmb6p6z1f5725g51aszu'
 
 
 def addr_to_bytes(account) -> bytes:
