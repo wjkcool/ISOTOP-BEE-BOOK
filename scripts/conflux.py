@@ -12,8 +12,8 @@ abi = "abi/"
 
 dds = {}  # dds address on test net and main net
 
-dds['test'] = 'cfxtest:acfkpsbbgwsuvw0mfw1d2uapus6pp1zkf6x7rfpjkg'
-dds['main'] = 'cfx:acgbcn8k6cd7eayp9s59st3bnst6ue1grjjcmp5tzp'
+dds['test'] = 'cfxtest:acewcnssk1zme8vfznzbcuffvhj2z49xpj3tn3edpf'
+dds['main'] = 'cfx:acewcnssk1zme8vfznzbcuffvhj2z49xpjxe2kckjt'
 
 
 def addr_to_bytes(account) -> bytes:
@@ -44,11 +44,11 @@ def ether_to_cfx(address: str):
     return '0x1' + address.lower()[3:]
 
 
-def cfx_convert(addr: str, chainId):
+def cfx_convert(addr: str, chainId=0):
     if addr[:2].lower() == '0x':
         if addr[3] not in ['0', '1', '8']:
             addr = ether_to_cfx(addr)
-        return str(Base32Address.encode(addr, chainId, True))
+        return str(Base32Address.encode(addr, chainId, True)), str(Base32Address.encode(addr, chainId, False))
     if addr[:4].lower() == 'cfx:' or addr[:8].lower() == 'cfxtest:':
         return Base32Address.decode(addr)["hex_address"]
 
@@ -192,8 +192,8 @@ class ConfluxWeb3:
         self.regDDS(contract, self.deploy(contract))
 
     def addrConvertor(self, addr: str):
-        cfx_convert(addr, self.chainId)
+        return cfx_convert(addr, self.chainId)
 
 
-if __name__ == "__main__":
-    w3 = ConfluxWeb3('test')
+w3 = ConfluxWeb3('main')
+t3 = ConfluxWeb3('test')
