@@ -1,0 +1,6 @@
+{
+  "name": "abi-encode",
+  "dependencies": {
+    "ethjs-abi": "^0.2.1"
+  }
+}
