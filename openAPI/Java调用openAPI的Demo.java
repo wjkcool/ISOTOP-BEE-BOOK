@@ -47,6 +47,9 @@ public class test {
         Map<String, String> params = new HashMap<>();
         params.put("chainid","1");
         params.put("id","1");
+        //data入参编码可参考: 
+        //java->https://github.com/iwanhk/ISOTOP-BEE-BOOK/blob/main/openAPI/Java%E8%B0%83%E7%94%A8openAPI%E4%BC%A0%E5%8F%82%E7%9A%84%E6%89%93%E5%8C%85%E6%96%B9%E5%BC%8Fdemo.java
+        //js->https://github.com/iwanhk/ISOTOP-BEE-BOOK/tree/main/openAPI/JS%E8%B0%83%E7%94%A8openAPI%E4%BC%A0%E5%8F%82%E7%9A%84%E6%89%93%E5%8C%85%E6%96%B9%E5%BC%8Fdemo
         //params.put("data","0xe4445210000000000000000000000000000000000000000000000000000000000000007b0000000000000000000000000000000000000000000000000000000000000001");
         //params.put("contact","cfxtest:acfpbb9kn2b2z3bev2435dk6j236gzc0kjjj4hwm45");
 
